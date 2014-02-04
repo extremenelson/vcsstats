@@ -1,0 +1,1840 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<log>
+<logentry
+   revision="32539">
+<author>peterb</author>
+<date>2013-09-19T14:01:34.977330Z</date>
+<msg>for prod build</msg>
+</logentry>
+<logentry
+   revision="32538">
+<author>peterb</author>
+<date>2013-09-19T14:00:02.275392Z</date>
+<msg>disabled in-memory database, that must be enabled only for development in spring-resources.xml
+made query for new members work that was broken
+added recipient change that was part of Stanley's workspace</msg>
+</logentry>
+<logentry
+   revision="31657">
+<author>peterb</author>
+<date>2013-08-21T14:01:17.170035Z</date>
+<msg>CHG 179530 - remove ePrescribing, messaging center, prescriber registration, paservices references from nh portal for ePrescribing shutdown</msg>
+</logentry>
+<logentry
+   revision="27618">
+<author>peterb</author>
+<date>2013-04-30T15:13:29.122517Z</date>
+<msg>CHG 180939 - fixed call to memberprofile that hasn't worked since last change to the call</msg>
+</logentry>
+<logentry
+   revision="27583">
+<author>macharya</author>
+<date>2013-04-29T15:22:32.199772Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="23090">
+<author>mramani</author>
+<date>2012-12-18T21:50:07.053470Z</date>
+<msg>missing code from Stanley's box checked into SVN</msg>
+</logentry>
+<logentry
+   revision="14142">
+<author>macharya</author>
+<date>2012-06-28T16:51:46.108028Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="12418">
+<author>stanleyb</author>
+<date>2012-05-08T19:49:27.530659Z</date>
+<msg>added Google Analytics variables</msg>
+</logentry>
+<logentry
+   revision="12417">
+<author>stanleyb</author>
+<date>2012-05-08T19:47:13.059327Z</date>
+<msg>changed page name to contact us</msg>
+</logentry>
+<logentry
+   revision="12416">
+<author>stanleyb</author>
+<date>2012-05-08T19:44:58.228613Z</date>
+<msg>cleaned up old GA and added new functions</msg>
+</logentry>
+<logentry
+   revision="12411">
+<author>stanleyb</author>
+<date>2012-05-08T19:34:48.138775Z</date>
+<msg>googleanalytics entry</msg>
+</logentry>
+<logentry
+   revision="12410">
+<author>stanleyb</author>
+<date>2012-05-08T19:34:07.262990Z</date>
+<msg>added getUserType()</msg>
+</logentry>
+<logentry
+   revision="9697">
+<author>stanleyb</author>
+<date>2012-03-09T20:21:46.329897Z</date>
+<msg>hard coded prod ga account, ga code on layout pages.</msg>
+</logentry>
+<logentry
+   revision="9694">
+<author>stanleyb</author>
+<date>2012-03-09T19:21:21.751772Z</date>
+<msg>google analytics reference on all pages</msg>
+</logentry>
+<logentry
+   revision="9693">
+<author>stanleyb</author>
+<date>2012-03-09T19:20:10.079897Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="9233">
+<author>stanleyb</author>
+<date>2012-02-22T20:34:56.571144Z</date>
+<msg>Adding Google Analytics for tracking userId, userType, and pageName.</msg>
+</logentry>
+<logentry
+   revision="9232">
+<author>stanleyb</author>
+<date>2012-02-22T20:34:26.882884Z</date>
+<msg>Adding Google Analytics for tracking userId, userType, and pageName.</msg>
+</logentry>
+<logentry
+   revision="9118">
+<author>stanleyb</author>
+<date>2012-02-17T20:50:42.298458Z</date>
+<msg>Adding Google Analytics for tracking userId, userType, and pageName.</msg>
+</logentry>
+<logentry
+   revision="9117">
+<author>stanleyb</author>
+<date>2012-02-17T20:49:24.296462Z</date>
+<msg>Adding Google Analytics for tracking userId, userType, and pageName.</msg>
+</logentry>
+<logentry
+   revision="9116">
+<author>stanleyb</author>
+<date>2012-02-17T20:48:20.091693Z</date>
+<msg>added methods for assigning a providerType for use in Google Analytics</msg>
+</logentry>
+<logentry
+   revision="9115">
+<author>stanleyb</author>
+<date>2012-02-17T20:47:25.293415Z</date>
+<msg>added variables for userType and pageName for Google Analytics</msg>
+</logentry>
+<logentry
+   revision="9114">
+<author>stanleyb</author>
+<date>2012-02-17T20:47:08.324231Z</date>
+<msg>added variables for userType and pageName for Google Analytics</msg>
+</logentry>
+<logentry
+   revision="9113">
+<author>stanleyb</author>
+<date>2012-02-17T20:46:43.589223Z</date>
+<msg>added variables for userType and pageName for Google Analytics</msg>
+</logentry>
+<logentry
+   revision="9112">
+<author>stanleyb</author>
+<date>2012-02-17T20:45:52.650419Z</date>
+<msg>added variables for userType and pageName for Google Analytics</msg>
+</logentry>
+<logentry
+   revision="9111">
+<author>stanleyb</author>
+<date>2012-02-17T20:42:46.286273Z</date>
+<msg>Added Google Analytics script for multiple userid, userType, and page name variables</msg>
+</logentry>
+<logentry
+   revision="8538">
+<author>stanleyb</author>
+<date>2012-02-03T15:38:57.602813Z</date>
+<msg>Release for 2-3-2012</msg>
+</logentry>
+<logentry
+   revision="8459">
+<author>stanleyb</author>
+<date>2012-02-02T15:33:39.623222Z</date>
+<msg>Added Prescriber Registration for ePrescribing</msg>
+</logentry>
+<logentry
+   revision="8458">
+<author>stanleyb</author>
+<date>2012-02-02T15:29:39.470905Z</date>
+<msg>infoMsg changes</msg>
+</logentry>
+<logentry
+   revision="8457">
+<author>stanleyb</author>
+<date>2012-02-02T15:29:06.222457Z</date>
+<msg>remove to fix project
+</msg>
+</logentry>
+<logentry
+   revision="8456">
+<author>stanleyb</author>
+<date>2012-02-02T15:28:08.919615Z</date>
+<msg>Changes for Prescriber Registration</msg>
+</logentry>
+<logentry
+   revision="8455">
+<author>stanleyb</author>
+<date>2012-02-02T15:27:46.238866Z</date>
+<msg>Changes for Prescriber Registration</msg>
+</logentry>
+<logentry
+   revision="8454">
+<author>stanleyb</author>
+<date>2012-02-02T15:27:07.270305Z</date>
+<msg>Changes for Prescriber Registration</msg>
+</logentry>
+<logentry
+   revision="8453">
+<author>stanleyb</author>
+<date>2012-02-02T15:15:09.642559Z</date>
+<msg>Changes for Prescriber Registration</msg>
+</logentry>
+<logentry
+   revision="8121">
+<author>brsanders</author>
+<date>2012-01-24T20:27:46.669809Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="8120">
+<author>brsanders</author>
+<date>2012-01-24T20:27:20.153505Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="8118">
+<author>brsanders</author>
+<date>2012-01-24T20:14:35.196423Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="8117">
+<author>brsanders</author>
+<date>2012-01-24T20:14:20.742928Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="8102">
+<author>brsanders</author>
+<date>2012-01-24T17:29:02.614030Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="8101">
+<author>brsanders</author>
+<date>2012-01-24T17:28:41.660369Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="8067">
+<author>brsanders</author>
+<date>2012-01-23T17:06:36.249880Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="8066">
+<author>brsanders</author>
+<date>2012-01-23T17:06:07.889779Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="8065">
+<author>brsanders</author>
+<date>2012-01-23T16:42:40.009988Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="8064">
+<author>brsanders</author>
+<date>2012-01-23T16:41:01.085581Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="8063">
+<author>brsanders</author>
+<date>2012-01-23T16:40:23.365865Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="5632">
+<author>macharya</author>
+<date>2011-11-17T19:33:27.138843Z</date>
+<msg>finallly ! Pace Portal merging changes from a different branch ! </msg>
+</logentry>
+<logentry
+   revision="5628">
+<author>stanleyb</author>
+<date>2011-11-17T18:50:44.138843Z</date>
+<msg>CAS changes</msg>
+</logentry>
+<logentry
+   revision="5627">
+<author>stanleyb</author>
+<date>2011-11-17T18:50:21.560718Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="5617">
+<author>stanleyb</author>
+<date>2011-11-17T18:35:20.466968Z</date>
+<msg>CAS looping change</msg>
+</logentry>
+<logentry
+   revision="4848">
+<author>stanleyb</author>
+<date>2011-11-02T14:03:34.178998Z</date>
+<msg>CAS changes - iterate through roles to find NH</msg>
+</logentry>
+<logentry
+   revision="4811">
+<author>stanleyb</author>
+<date>2011-11-01T15:39:06.699398Z</date>
+<msg>restored from 3192 due to accidental commit.</msg>
+</logentry>
+<logentry
+   revision="4810">
+<author>stanleyb</author>
+<date>2011-11-01T15:38:17.277523Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="4809">
+<author>stanleyb</author>
+<date>2011-11-01T15:24:36.761898Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="4808">
+<author>stanleyb</author>
+<date>2011-11-01T15:24:27.465023Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="4807">
+<author>stanleyb</author>
+<date>2011-11-01T15:20:29.246273Z</date>
+<msg>merged head with 3192 to correct accidental commit</msg>
+</logentry>
+<logentry
+   revision="4801">
+<author>macharya</author>
+<date>2011-11-01T14:18:24.496273Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="3192">
+<author>macharya</author>
+<date>2011-09-30T20:27:56.645463Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="1669">
+<author>stanleyb</author>
+<date>2011-08-02T15:36:12.021887Z</date>
+<msg>added commented ePrescribing link</msg>
+</logentry>
+<logentry
+   revision="1668">
+<author>stanleyb</author>
+<date>2011-08-02T15:35:36.677232Z</date>
+<msg>initial import</msg>
+</logentry>
+<logentry
+   revision="1667">
+<author>stanleyb</author>
+<date>2011-08-02T15:34:55.176170Z</date>
+<msg>added uses caches and contactInfo </msg>
+</logentry>
+<logentry
+   revision="1567">
+<author>stanleyb</author>
+<date>2011-07-28T20:30:22.141563Z</date>
+<msg>initial import</msg>
+</logentry>
+</log>
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<log>
+<logentry
+   revision="32539">
+<author>peterb</author>
+<date>2013-09-19T14:01:34.977330Z</date>
+<msg>for prod build</msg>
+</logentry>
+<logentry
+   revision="32538">
+<author>peterb</author>
+<date>2013-09-19T14:00:02.275392Z</date>
+<msg>disabled in-memory database, that must be enabled only for development in spring-resources.xml
+made query for new members work that was broken
+added recipient change that was part of Stanley's workspace</msg>
+</logentry>
+<logentry
+   revision="31657">
+<author>peterb</author>
+<date>2013-08-21T14:01:17.170035Z</date>
+<msg>CHG 179530 - remove ePrescribing, messaging center, prescriber registration, paservices references from nh portal for ePrescribing shutdown</msg>
+</logentry>
+<logentry
+   revision="27618">
+<author>peterb</author>
+<date>2013-04-30T15:13:29.122517Z</date>
+<msg>CHG 180939 - fixed call to memberprofile that hasn't worked since last change to the call</msg>
+</logentry>
+<logentry
+   revision="27583">
+<author>macharya</author>
+<date>2013-04-29T15:22:32.199772Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="23090">
+<author>mramani</author>
+<date>2012-12-18T21:50:07.053470Z</date>
+<msg>missing code from Stanley's box checked into SVN</msg>
+</logentry>
+<logentry
+   revision="14142">
+<author>macharya</author>
+<date>2012-06-28T16:51:46.108028Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="12418">
+<author>stanleyb</author>
+<date>2012-05-08T19:49:27.530659Z</date>
+<msg>added Google Analytics variables</msg>
+</logentry>
+<logentry
+   revision="12417">
+<author>stanleyb</author>
+<date>2012-05-08T19:47:13.059327Z</date>
+<msg>changed page name to contact us</msg>
+</logentry>
+<logentry
+   revision="12416">
+<author>stanleyb</author>
+<date>2012-05-08T19:44:58.228613Z</date>
+<msg>cleaned up old GA and added new functions</msg>
+</logentry>
+<logentry
+   revision="12411">
+<author>stanleyb</author>
+<date>2012-05-08T19:34:48.138775Z</date>
+<msg>googleanalytics entry</msg>
+</logentry>
+<logentry
+   revision="12410">
+<author>stanleyb</author>
+<date>2012-05-08T19:34:07.262990Z</date>
+<msg>added getUserType()</msg>
+</logentry>
+<logentry
+   revision="9697">
+<author>stanleyb</author>
+<date>2012-03-09T20:21:46.329897Z</date>
+<msg>hard coded prod ga account, ga code on layout pages.</msg>
+</logentry>
+<logentry
+   revision="9694">
+<author>stanleyb</author>
+<date>2012-03-09T19:21:21.751772Z</date>
+<msg>google analytics reference on all pages</msg>
+</logentry>
+<logentry
+   revision="9693">
+<author>stanleyb</author>
+<date>2012-03-09T19:20:10.079897Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="9233">
+<author>stanleyb</author>
+<date>2012-02-22T20:34:56.571144Z</date>
+<msg>Adding Google Analytics for tracking userId, userType, and pageName.</msg>
+</logentry>
+<logentry
+   revision="9232">
+<author>stanleyb</author>
+<date>2012-02-22T20:34:26.882884Z</date>
+<msg>Adding Google Analytics for tracking userId, userType, and pageName.</msg>
+</logentry>
+<logentry
+   revision="9118">
+<author>stanleyb</author>
+<date>2012-02-17T20:50:42.298458Z</date>
+<msg>Adding Google Analytics for tracking userId, userType, and pageName.</msg>
+</logentry>
+<logentry
+   revision="9117">
+<author>stanleyb</author>
+<date>2012-02-17T20:49:24.296462Z</date>
+<msg>Adding Google Analytics for tracking userId, userType, and pageName.</msg>
+</logentry>
+<logentry
+   revision="9116">
+<author>stanleyb</author>
+<date>2012-02-17T20:48:20.091693Z</date>
+<msg>added methods for assigning a providerType for use in Google Analytics</msg>
+</logentry>
+<logentry
+   revision="9115">
+<author>stanleyb</author>
+<date>2012-02-17T20:47:25.293415Z</date>
+<msg>added variables for userType and pageName for Google Analytics</msg>
+</logentry>
+<logentry
+   revision="9114">
+<author>stanleyb</author>
+<date>2012-02-17T20:47:08.324231Z</date>
+<msg>added variables for userType and pageName for Google Analytics</msg>
+</logentry>
+<logentry
+   revision="9113">
+<author>stanleyb</author>
+<date>2012-02-17T20:46:43.589223Z</date>
+<msg>added variables for userType and pageName for Google Analytics</msg>
+</logentry>
+<logentry
+   revision="9112">
+<author>stanleyb</author>
+<date>2012-02-17T20:45:52.650419Z</date>
+<msg>added variables for userType and pageName for Google Analytics</msg>
+</logentry>
+<logentry
+   revision="9111">
+<author>stanleyb</author>
+<date>2012-02-17T20:42:46.286273Z</date>
+<msg>Added Google Analytics script for multiple userid, userType, and page name variables</msg>
+</logentry>
+<logentry
+   revision="8538">
+<author>stanleyb</author>
+<date>2012-02-03T15:38:57.602813Z</date>
+<msg>Release for 2-3-2012</msg>
+</logentry>
+<logentry
+   revision="8459">
+<author>stanleyb</author>
+<date>2012-02-02T15:33:39.623222Z</date>
+<msg>Added Prescriber Registration for ePrescribing</msg>
+</logentry>
+<logentry
+   revision="8458">
+<author>stanleyb</author>
+<date>2012-02-02T15:29:39.470905Z</date>
+<msg>infoMsg changes</msg>
+</logentry>
+<logentry
+   revision="8457">
+<author>stanleyb</author>
+<date>2012-02-02T15:29:06.222457Z</date>
+<msg>remove to fix project
+</msg>
+</logentry>
+<logentry
+   revision="8456">
+<author>stanleyb</author>
+<date>2012-02-02T15:28:08.919615Z</date>
+<msg>Changes for Prescriber Registration</msg>
+</logentry>
+<logentry
+   revision="8455">
+<author>stanleyb</author>
+<date>2012-02-02T15:27:46.238866Z</date>
+<msg>Changes for Prescriber Registration</msg>
+</logentry>
+<logentry
+   revision="8454">
+<author>stanleyb</author>
+<date>2012-02-02T15:27:07.270305Z</date>
+<msg>Changes for Prescriber Registration</msg>
+</logentry>
+<logentry
+   revision="8453">
+<author>stanleyb</author>
+<date>2012-02-02T15:15:09.642559Z</date>
+<msg>Changes for Prescriber Registration</msg>
+</logentry>
+<logentry
+   revision="8121">
+<author>brsanders</author>
+<date>2012-01-24T20:27:46.669809Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="8120">
+<author>brsanders</author>
+<date>2012-01-24T20:27:20.153505Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="8118">
+<author>brsanders</author>
+<date>2012-01-24T20:14:35.196423Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="8117">
+<author>brsanders</author>
+<date>2012-01-24T20:14:20.742928Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="8102">
+<author>brsanders</author>
+<date>2012-01-24T17:29:02.614030Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="8101">
+<author>brsanders</author>
+<date>2012-01-24T17:28:41.660369Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="8067">
+<author>brsanders</author>
+<date>2012-01-23T17:06:36.249880Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="8066">
+<author>brsanders</author>
+<date>2012-01-23T17:06:07.889779Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="8065">
+<author>brsanders</author>
+<date>2012-01-23T16:42:40.009988Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="8064">
+<author>brsanders</author>
+<date>2012-01-23T16:41:01.085581Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="8063">
+<author>brsanders</author>
+<date>2012-01-23T16:40:23.365865Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="5632">
+<author>macharya</author>
+<date>2011-11-17T19:33:27.138843Z</date>
+<msg>finallly ! Pace Portal merging changes from a different branch ! </msg>
+</logentry>
+<logentry
+   revision="5628">
+<author>stanleyb</author>
+<date>2011-11-17T18:50:44.138843Z</date>
+<msg>CAS changes</msg>
+</logentry>
+<logentry
+   revision="5627">
+<author>stanleyb</author>
+<date>2011-11-17T18:50:21.560718Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="5617">
+<author>stanleyb</author>
+<date>2011-11-17T18:35:20.466968Z</date>
+<msg>CAS looping change</msg>
+</logentry>
+<logentry
+   revision="4848">
+<author>stanleyb</author>
+<date>2011-11-02T14:03:34.178998Z</date>
+<msg>CAS changes - iterate through roles to find NH</msg>
+</logentry>
+<logentry
+   revision="4811">
+<author>stanleyb</author>
+<date>2011-11-01T15:39:06.699398Z</date>
+<msg>restored from 3192 due to accidental commit.</msg>
+</logentry>
+<logentry
+   revision="4810">
+<author>stanleyb</author>
+<date>2011-11-01T15:38:17.277523Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="4809">
+<author>stanleyb</author>
+<date>2011-11-01T15:24:36.761898Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="4808">
+<author>stanleyb</author>
+<date>2011-11-01T15:24:27.465023Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="4807">
+<author>stanleyb</author>
+<date>2011-11-01T15:20:29.246273Z</date>
+<msg>merged head with 3192 to correct accidental commit</msg>
+</logentry>
+<logentry
+   revision="4801">
+<author>macharya</author>
+<date>2011-11-01T14:18:24.496273Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="3192">
+<author>macharya</author>
+<date>2011-09-30T20:27:56.645463Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="1669">
+<author>stanleyb</author>
+<date>2011-08-02T15:36:12.021887Z</date>
+<msg>added commented ePrescribing link</msg>
+</logentry>
+<logentry
+   revision="1668">
+<author>stanleyb</author>
+<date>2011-08-02T15:35:36.677232Z</date>
+<msg>initial import</msg>
+</logentry>
+<logentry
+   revision="1667">
+<author>stanleyb</author>
+<date>2011-08-02T15:34:55.176170Z</date>
+<msg>added uses caches and contactInfo </msg>
+</logentry>
+<logentry
+   revision="1567">
+<author>stanleyb</author>
+<date>2011-07-28T20:30:22.141563Z</date>
+<msg>initial import</msg>
+</logentry>
+</log>
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<log>
+<logentry
+   revision="32539">
+<author>peterb</author>
+<date>2013-09-19T14:01:34.977330Z</date>
+<msg>for prod build</msg>
+</logentry>
+<logentry
+   revision="32538">
+<author>peterb</author>
+<date>2013-09-19T14:00:02.275392Z</date>
+<msg>disabled in-memory database, that must be enabled only for development in spring-resources.xml
+made query for new members work that was broken
+added recipient change that was part of Stanley's workspace</msg>
+</logentry>
+<logentry
+   revision="31657">
+<author>peterb</author>
+<date>2013-08-21T14:01:17.170035Z</date>
+<msg>CHG 179530 - remove ePrescribing, messaging center, prescriber registration, paservices references from nh portal for ePrescribing shutdown</msg>
+</logentry>
+<logentry
+   revision="27618">
+<author>peterb</author>
+<date>2013-04-30T15:13:29.122517Z</date>
+<msg>CHG 180939 - fixed call to memberprofile that hasn't worked since last change to the call</msg>
+</logentry>
+<logentry
+   revision="27583">
+<author>macharya</author>
+<date>2013-04-29T15:22:32.199772Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="23090">
+<author>mramani</author>
+<date>2012-12-18T21:50:07.053470Z</date>
+<msg>missing code from Stanley's box checked into SVN</msg>
+</logentry>
+<logentry
+   revision="14142">
+<author>macharya</author>
+<date>2012-06-28T16:51:46.108028Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="12418">
+<author>stanleyb</author>
+<date>2012-05-08T19:49:27.530659Z</date>
+<msg>added Google Analytics variables</msg>
+</logentry>
+<logentry
+   revision="12417">
+<author>stanleyb</author>
+<date>2012-05-08T19:47:13.059327Z</date>
+<msg>changed page name to contact us</msg>
+</logentry>
+<logentry
+   revision="12416">
+<author>stanleyb</author>
+<date>2012-05-08T19:44:58.228613Z</date>
+<msg>cleaned up old GA and added new functions</msg>
+</logentry>
+<logentry
+   revision="12411">
+<author>stanleyb</author>
+<date>2012-05-08T19:34:48.138775Z</date>
+<msg>googleanalytics entry</msg>
+</logentry>
+<logentry
+   revision="12410">
+<author>stanleyb</author>
+<date>2012-05-08T19:34:07.262990Z</date>
+<msg>added getUserType()</msg>
+</logentry>
+<logentry
+   revision="9697">
+<author>stanleyb</author>
+<date>2012-03-09T20:21:46.329897Z</date>
+<msg>hard coded prod ga account, ga code on layout pages.</msg>
+</logentry>
+<logentry
+   revision="9694">
+<author>stanleyb</author>
+<date>2012-03-09T19:21:21.751772Z</date>
+<msg>google analytics reference on all pages</msg>
+</logentry>
+<logentry
+   revision="9693">
+<author>stanleyb</author>
+<date>2012-03-09T19:20:10.079897Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="9233">
+<author>stanleyb</author>
+<date>2012-02-22T20:34:56.571144Z</date>
+<msg>Adding Google Analytics for tracking userId, userType, and pageName.</msg>
+</logentry>
+<logentry
+   revision="9232">
+<author>stanleyb</author>
+<date>2012-02-22T20:34:26.882884Z</date>
+<msg>Adding Google Analytics for tracking userId, userType, and pageName.</msg>
+</logentry>
+<logentry
+   revision="9118">
+<author>stanleyb</author>
+<date>2012-02-17T20:50:42.298458Z</date>
+<msg>Adding Google Analytics for tracking userId, userType, and pageName.</msg>
+</logentry>
+<logentry
+   revision="9117">
+<author>stanleyb</author>
+<date>2012-02-17T20:49:24.296462Z</date>
+<msg>Adding Google Analytics for tracking userId, userType, and pageName.</msg>
+</logentry>
+<logentry
+   revision="9116">
+<author>stanleyb</author>
+<date>2012-02-17T20:48:20.091693Z</date>
+<msg>added methods for assigning a providerType for use in Google Analytics</msg>
+</logentry>
+<logentry
+   revision="9115">
+<author>stanleyb</author>
+<date>2012-02-17T20:47:25.293415Z</date>
+<msg>added variables for userType and pageName for Google Analytics</msg>
+</logentry>
+<logentry
+   revision="9114">
+<author>stanleyb</author>
+<date>2012-02-17T20:47:08.324231Z</date>
+<msg>added variables for userType and pageName for Google Analytics</msg>
+</logentry>
+<logentry
+   revision="9113">
+<author>stanleyb</author>
+<date>2012-02-17T20:46:43.589223Z</date>
+<msg>added variables for userType and pageName for Google Analytics</msg>
+</logentry>
+<logentry
+   revision="9112">
+<author>stanleyb</author>
+<date>2012-02-17T20:45:52.650419Z</date>
+<msg>added variables for userType and pageName for Google Analytics</msg>
+</logentry>
+<logentry
+   revision="9111">
+<author>stanleyb</author>
+<date>2012-02-17T20:42:46.286273Z</date>
+<msg>Added Google Analytics script for multiple userid, userType, and page name variables</msg>
+</logentry>
+<logentry
+   revision="8538">
+<author>stanleyb</author>
+<date>2012-02-03T15:38:57.602813Z</date>
+<msg>Release for 2-3-2012</msg>
+</logentry>
+<logentry
+   revision="8459">
+<author>stanleyb</author>
+<date>2012-02-02T15:33:39.623222Z</date>
+<msg>Added Prescriber Registration for ePrescribing</msg>
+</logentry>
+<logentry
+   revision="8458">
+<author>stanleyb</author>
+<date>2012-02-02T15:29:39.470905Z</date>
+<msg>infoMsg changes</msg>
+</logentry>
+<logentry
+   revision="8457">
+<author>stanleyb</author>
+<date>2012-02-02T15:29:06.222457Z</date>
+<msg>remove to fix project
+</msg>
+</logentry>
+<logentry
+   revision="8456">
+<author>stanleyb</author>
+<date>2012-02-02T15:28:08.919615Z</date>
+<msg>Changes for Prescriber Registration</msg>
+</logentry>
+<logentry
+   revision="8455">
+<author>stanleyb</author>
+<date>2012-02-02T15:27:46.238866Z</date>
+<msg>Changes for Prescriber Registration</msg>
+</logentry>
+<logentry
+   revision="8454">
+<author>stanleyb</author>
+<date>2012-02-02T15:27:07.270305Z</date>
+<msg>Changes for Prescriber Registration</msg>
+</logentry>
+<logentry
+   revision="8453">
+<author>stanleyb</author>
+<date>2012-02-02T15:15:09.642559Z</date>
+<msg>Changes for Prescriber Registration</msg>
+</logentry>
+<logentry
+   revision="8121">
+<author>brsanders</author>
+<date>2012-01-24T20:27:46.669809Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="8120">
+<author>brsanders</author>
+<date>2012-01-24T20:27:20.153505Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="8118">
+<author>brsanders</author>
+<date>2012-01-24T20:14:35.196423Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="8117">
+<author>brsanders</author>
+<date>2012-01-24T20:14:20.742928Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="8102">
+<author>brsanders</author>
+<date>2012-01-24T17:29:02.614030Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="8101">
+<author>brsanders</author>
+<date>2012-01-24T17:28:41.660369Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="8067">
+<author>brsanders</author>
+<date>2012-01-23T17:06:36.249880Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="8066">
+<author>brsanders</author>
+<date>2012-01-23T17:06:07.889779Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="8065">
+<author>brsanders</author>
+<date>2012-01-23T16:42:40.009988Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="8064">
+<author>brsanders</author>
+<date>2012-01-23T16:41:01.085581Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="8063">
+<author>brsanders</author>
+<date>2012-01-23T16:40:23.365865Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="5632">
+<author>macharya</author>
+<date>2011-11-17T19:33:27.138843Z</date>
+<msg>finallly ! Pace Portal merging changes from a different branch ! </msg>
+</logentry>
+<logentry
+   revision="5628">
+<author>stanleyb</author>
+<date>2011-11-17T18:50:44.138843Z</date>
+<msg>CAS changes</msg>
+</logentry>
+<logentry
+   revision="5627">
+<author>stanleyb</author>
+<date>2011-11-17T18:50:21.560718Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="5617">
+<author>stanleyb</author>
+<date>2011-11-17T18:35:20.466968Z</date>
+<msg>CAS looping change</msg>
+</logentry>
+<logentry
+   revision="4848">
+<author>stanleyb</author>
+<date>2011-11-02T14:03:34.178998Z</date>
+<msg>CAS changes - iterate through roles to find NH</msg>
+</logentry>
+<logentry
+   revision="4811">
+<author>stanleyb</author>
+<date>2011-11-01T15:39:06.699398Z</date>
+<msg>restored from 3192 due to accidental commit.</msg>
+</logentry>
+<logentry
+   revision="4810">
+<author>stanleyb</author>
+<date>2011-11-01T15:38:17.277523Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="4809">
+<author>stanleyb</author>
+<date>2011-11-01T15:24:36.761898Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="4808">
+<author>stanleyb</author>
+<date>2011-11-01T15:24:27.465023Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="4807">
+<author>stanleyb</author>
+<date>2011-11-01T15:20:29.246273Z</date>
+<msg>merged head with 3192 to correct accidental commit</msg>
+</logentry>
+<logentry
+   revision="4801">
+<author>macharya</author>
+<date>2011-11-01T14:18:24.496273Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="3192">
+<author>macharya</author>
+<date>2011-09-30T20:27:56.645463Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="1669">
+<author>stanleyb</author>
+<date>2011-08-02T15:36:12.021887Z</date>
+<msg>added commented ePrescribing link</msg>
+</logentry>
+<logentry
+   revision="1668">
+<author>stanleyb</author>
+<date>2011-08-02T15:35:36.677232Z</date>
+<msg>initial import</msg>
+</logentry>
+<logentry
+   revision="1667">
+<author>stanleyb</author>
+<date>2011-08-02T15:34:55.176170Z</date>
+<msg>added uses caches and contactInfo </msg>
+</logentry>
+<logentry
+   revision="1567">
+<author>stanleyb</author>
+<date>2011-07-28T20:30:22.141563Z</date>
+<msg>initial import</msg>
+</logentry>
+</log>
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<log>
+<logentry
+   revision="32539">
+<author>peterb</author>
+<date>2013-09-19T14:01:34.977330Z</date>
+<msg>for prod build</msg>
+</logentry>
+<logentry
+   revision="32538">
+<author>peterb</author>
+<date>2013-09-19T14:00:02.275392Z</date>
+<msg>disabled in-memory database, that must be enabled only for development in spring-resources.xml
+made query for new members work that was broken
+added recipient change that was part of Stanley's workspace</msg>
+</logentry>
+<logentry
+   revision="31657">
+<author>peterb</author>
+<date>2013-08-21T14:01:17.170035Z</date>
+<msg>CHG 179530 - remove ePrescribing, messaging center, prescriber registration, paservices references from nh portal for ePrescribing shutdown</msg>
+</logentry>
+<logentry
+   revision="27618">
+<author>peterb</author>
+<date>2013-04-30T15:13:29.122517Z</date>
+<msg>CHG 180939 - fixed call to memberprofile that hasn't worked since last change to the call</msg>
+</logentry>
+<logentry
+   revision="27583">
+<author>macharya</author>
+<date>2013-04-29T15:22:32.199772Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="23090">
+<author>mramani</author>
+<date>2012-12-18T21:50:07.053470Z</date>
+<msg>missing code from Stanley's box checked into SVN</msg>
+</logentry>
+<logentry
+   revision="14142">
+<author>macharya</author>
+<date>2012-06-28T16:51:46.108028Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="12418">
+<author>stanleyb</author>
+<date>2012-05-08T19:49:27.530659Z</date>
+<msg>added Google Analytics variables</msg>
+</logentry>
+<logentry
+   revision="12417">
+<author>stanleyb</author>
+<date>2012-05-08T19:47:13.059327Z</date>
+<msg>changed page name to contact us</msg>
+</logentry>
+<logentry
+   revision="12416">
+<author>stanleyb</author>
+<date>2012-05-08T19:44:58.228613Z</date>
+<msg>cleaned up old GA and added new functions</msg>
+</logentry>
+<logentry
+   revision="12411">
+<author>stanleyb</author>
+<date>2012-05-08T19:34:48.138775Z</date>
+<msg>googleanalytics entry</msg>
+</logentry>
+<logentry
+   revision="12410">
+<author>stanleyb</author>
+<date>2012-05-08T19:34:07.262990Z</date>
+<msg>added getUserType()</msg>
+</logentry>
+<logentry
+   revision="9697">
+<author>stanleyb</author>
+<date>2012-03-09T20:21:46.329897Z</date>
+<msg>hard coded prod ga account, ga code on layout pages.</msg>
+</logentry>
+<logentry
+   revision="9694">
+<author>stanleyb</author>
+<date>2012-03-09T19:21:21.751772Z</date>
+<msg>google analytics reference on all pages</msg>
+</logentry>
+<logentry
+   revision="9693">
+<author>stanleyb</author>
+<date>2012-03-09T19:20:10.079897Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="9233">
+<author>stanleyb</author>
+<date>2012-02-22T20:34:56.571144Z</date>
+<msg>Adding Google Analytics for tracking userId, userType, and pageName.</msg>
+</logentry>
+<logentry
+   revision="9232">
+<author>stanleyb</author>
+<date>2012-02-22T20:34:26.882884Z</date>
+<msg>Adding Google Analytics for tracking userId, userType, and pageName.</msg>
+</logentry>
+<logentry
+   revision="9118">
+<author>stanleyb</author>
+<date>2012-02-17T20:50:42.298458Z</date>
+<msg>Adding Google Analytics for tracking userId, userType, and pageName.</msg>
+</logentry>
+<logentry
+   revision="9117">
+<author>stanleyb</author>
+<date>2012-02-17T20:49:24.296462Z</date>
+<msg>Adding Google Analytics for tracking userId, userType, and pageName.</msg>
+</logentry>
+<logentry
+   revision="9116">
+<author>stanleyb</author>
+<date>2012-02-17T20:48:20.091693Z</date>
+<msg>added methods for assigning a providerType for use in Google Analytics</msg>
+</logentry>
+<logentry
+   revision="9115">
+<author>stanleyb</author>
+<date>2012-02-17T20:47:25.293415Z</date>
+<msg>added variables for userType and pageName for Google Analytics</msg>
+</logentry>
+<logentry
+   revision="9114">
+<author>stanleyb</author>
+<date>2012-02-17T20:47:08.324231Z</date>
+<msg>added variables for userType and pageName for Google Analytics</msg>
+</logentry>
+<logentry
+   revision="9113">
+<author>stanleyb</author>
+<date>2012-02-17T20:46:43.589223Z</date>
+<msg>added variables for userType and pageName for Google Analytics</msg>
+</logentry>
+<logentry
+   revision="9112">
+<author>stanleyb</author>
+<date>2012-02-17T20:45:52.650419Z</date>
+<msg>added variables for userType and pageName for Google Analytics</msg>
+</logentry>
+<logentry
+   revision="9111">
+<author>stanleyb</author>
+<date>2012-02-17T20:42:46.286273Z</date>
+<msg>Added Google Analytics script for multiple userid, userType, and page name variables</msg>
+</logentry>
+<logentry
+   revision="8538">
+<author>stanleyb</author>
+<date>2012-02-03T15:38:57.602813Z</date>
+<msg>Release for 2-3-2012</msg>
+</logentry>
+<logentry
+   revision="8459">
+<author>stanleyb</author>
+<date>2012-02-02T15:33:39.623222Z</date>
+<msg>Added Prescriber Registration for ePrescribing</msg>
+</logentry>
+<logentry
+   revision="8458">
+<author>stanleyb</author>
+<date>2012-02-02T15:29:39.470905Z</date>
+<msg>infoMsg changes</msg>
+</logentry>
+<logentry
+   revision="8457">
+<author>stanleyb</author>
+<date>2012-02-02T15:29:06.222457Z</date>
+<msg>remove to fix project
+</msg>
+</logentry>
+<logentry
+   revision="8456">
+<author>stanleyb</author>
+<date>2012-02-02T15:28:08.919615Z</date>
+<msg>Changes for Prescriber Registration</msg>
+</logentry>
+<logentry
+   revision="8455">
+<author>stanleyb</author>
+<date>2012-02-02T15:27:46.238866Z</date>
+<msg>Changes for Prescriber Registration</msg>
+</logentry>
+<logentry
+   revision="8454">
+<author>stanleyb</author>
+<date>2012-02-02T15:27:07.270305Z</date>
+<msg>Changes for Prescriber Registration</msg>
+</logentry>
+<logentry
+   revision="8453">
+<author>stanleyb</author>
+<date>2012-02-02T15:15:09.642559Z</date>
+<msg>Changes for Prescriber Registration</msg>
+</logentry>
+<logentry
+   revision="8121">
+<author>brsanders</author>
+<date>2012-01-24T20:27:46.669809Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="8120">
+<author>brsanders</author>
+<date>2012-01-24T20:27:20.153505Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="8118">
+<author>brsanders</author>
+<date>2012-01-24T20:14:35.196423Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="8117">
+<author>brsanders</author>
+<date>2012-01-24T20:14:20.742928Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="8102">
+<author>brsanders</author>
+<date>2012-01-24T17:29:02.614030Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="8101">
+<author>brsanders</author>
+<date>2012-01-24T17:28:41.660369Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="8067">
+<author>brsanders</author>
+<date>2012-01-23T17:06:36.249880Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="8066">
+<author>brsanders</author>
+<date>2012-01-23T17:06:07.889779Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="8065">
+<author>brsanders</author>
+<date>2012-01-23T16:42:40.009988Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="8064">
+<author>brsanders</author>
+<date>2012-01-23T16:41:01.085581Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="8063">
+<author>brsanders</author>
+<date>2012-01-23T16:40:23.365865Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="5632">
+<author>macharya</author>
+<date>2011-11-17T19:33:27.138843Z</date>
+<msg>finallly ! Pace Portal merging changes from a different branch ! </msg>
+</logentry>
+<logentry
+   revision="5628">
+<author>stanleyb</author>
+<date>2011-11-17T18:50:44.138843Z</date>
+<msg>CAS changes</msg>
+</logentry>
+<logentry
+   revision="5627">
+<author>stanleyb</author>
+<date>2011-11-17T18:50:21.560718Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="5617">
+<author>stanleyb</author>
+<date>2011-11-17T18:35:20.466968Z</date>
+<msg>CAS looping change</msg>
+</logentry>
+<logentry
+   revision="4848">
+<author>stanleyb</author>
+<date>2011-11-02T14:03:34.178998Z</date>
+<msg>CAS changes - iterate through roles to find NH</msg>
+</logentry>
+<logentry
+   revision="4811">
+<author>stanleyb</author>
+<date>2011-11-01T15:39:06.699398Z</date>
+<msg>restored from 3192 due to accidental commit.</msg>
+</logentry>
+<logentry
+   revision="4810">
+<author>stanleyb</author>
+<date>2011-11-01T15:38:17.277523Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="4809">
+<author>stanleyb</author>
+<date>2011-11-01T15:24:36.761898Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="4808">
+<author>stanleyb</author>
+<date>2011-11-01T15:24:27.465023Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="4807">
+<author>stanleyb</author>
+<date>2011-11-01T15:20:29.246273Z</date>
+<msg>merged head with 3192 to correct accidental commit</msg>
+</logentry>
+<logentry
+   revision="4801">
+<author>macharya</author>
+<date>2011-11-01T14:18:24.496273Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="3192">
+<author>macharya</author>
+<date>2011-09-30T20:27:56.645463Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="1669">
+<author>stanleyb</author>
+<date>2011-08-02T15:36:12.021887Z</date>
+<msg>added commented ePrescribing link</msg>
+</logentry>
+<logentry
+   revision="1668">
+<author>stanleyb</author>
+<date>2011-08-02T15:35:36.677232Z</date>
+<msg>initial import</msg>
+</logentry>
+<logentry
+   revision="1667">
+<author>stanleyb</author>
+<date>2011-08-02T15:34:55.176170Z</date>
+<msg>added uses caches and contactInfo </msg>
+</logentry>
+<logentry
+   revision="1567">
+<author>stanleyb</author>
+<date>2011-07-28T20:30:22.141563Z</date>
+<msg>initial import</msg>
+</logentry>
+</log>
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<log>
+<logentry
+   revision="32539">
+<author>peterb</author>
+<date>2013-09-19T14:01:34.977330Z</date>
+<msg>for prod build</msg>
+</logentry>
+<logentry
+   revision="32538">
+<author>peterb</author>
+<date>2013-09-19T14:00:02.275392Z</date>
+<msg>disabled in-memory database, that must be enabled only for development in spring-resources.xml
+made query for new members work that was broken
+added recipient change that was part of Stanley's workspace</msg>
+</logentry>
+<logentry
+   revision="31657">
+<author>peterb</author>
+<date>2013-08-21T14:01:17.170035Z</date>
+<msg>CHG 179530 - remove ePrescribing, messaging center, prescriber registration, paservices references from nh portal for ePrescribing shutdown</msg>
+</logentry>
+<logentry
+   revision="27618">
+<author>peterb</author>
+<date>2013-04-30T15:13:29.122517Z</date>
+<msg>CHG 180939 - fixed call to memberprofile that hasn't worked since last change to the call</msg>
+</logentry>
+<logentry
+   revision="27583">
+<author>macharya</author>
+<date>2013-04-29T15:22:32.199772Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="23090">
+<author>mramani</author>
+<date>2012-12-18T21:50:07.053470Z</date>
+<msg>missing code from Stanley's box checked into SVN</msg>
+</logentry>
+<logentry
+   revision="14142">
+<author>macharya</author>
+<date>2012-06-28T16:51:46.108028Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="12418">
+<author>stanleyb</author>
+<date>2012-05-08T19:49:27.530659Z</date>
+<msg>added Google Analytics variables</msg>
+</logentry>
+<logentry
+   revision="12417">
+<author>stanleyb</author>
+<date>2012-05-08T19:47:13.059327Z</date>
+<msg>changed page name to contact us</msg>
+</logentry>
+<logentry
+   revision="12416">
+<author>stanleyb</author>
+<date>2012-05-08T19:44:58.228613Z</date>
+<msg>cleaned up old GA and added new functions</msg>
+</logentry>
+<logentry
+   revision="12411">
+<author>stanleyb</author>
+<date>2012-05-08T19:34:48.138775Z</date>
+<msg>googleanalytics entry</msg>
+</logentry>
+<logentry
+   revision="12410">
+<author>stanleyb</author>
+<date>2012-05-08T19:34:07.262990Z</date>
+<msg>added getUserType()</msg>
+</logentry>
+<logentry
+   revision="9697">
+<author>stanleyb</author>
+<date>2012-03-09T20:21:46.329897Z</date>
+<msg>hard coded prod ga account, ga code on layout pages.</msg>
+</logentry>
+<logentry
+   revision="9694">
+<author>stanleyb</author>
+<date>2012-03-09T19:21:21.751772Z</date>
+<msg>google analytics reference on all pages</msg>
+</logentry>
+<logentry
+   revision="9693">
+<author>stanleyb</author>
+<date>2012-03-09T19:20:10.079897Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="9233">
+<author>stanleyb</author>
+<date>2012-02-22T20:34:56.571144Z</date>
+<msg>Adding Google Analytics for tracking userId, userType, and pageName.</msg>
+</logentry>
+<logentry
+   revision="9232">
+<author>stanleyb</author>
+<date>2012-02-22T20:34:26.882884Z</date>
+<msg>Adding Google Analytics for tracking userId, userType, and pageName.</msg>
+</logentry>
+<logentry
+   revision="9118">
+<author>stanleyb</author>
+<date>2012-02-17T20:50:42.298458Z</date>
+<msg>Adding Google Analytics for tracking userId, userType, and pageName.</msg>
+</logentry>
+<logentry
+   revision="9117">
+<author>stanleyb</author>
+<date>2012-02-17T20:49:24.296462Z</date>
+<msg>Adding Google Analytics for tracking userId, userType, and pageName.</msg>
+</logentry>
+<logentry
+   revision="9116">
+<author>stanleyb</author>
+<date>2012-02-17T20:48:20.091693Z</date>
+<msg>added methods for assigning a providerType for use in Google Analytics</msg>
+</logentry>
+<logentry
+   revision="9115">
+<author>stanleyb</author>
+<date>2012-02-17T20:47:25.293415Z</date>
+<msg>added variables for userType and pageName for Google Analytics</msg>
+</logentry>
+<logentry
+   revision="9114">
+<author>stanleyb</author>
+<date>2012-02-17T20:47:08.324231Z</date>
+<msg>added variables for userType and pageName for Google Analytics</msg>
+</logentry>
+<logentry
+   revision="9113">
+<author>stanleyb</author>
+<date>2012-02-17T20:46:43.589223Z</date>
+<msg>added variables for userType and pageName for Google Analytics</msg>
+</logentry>
+<logentry
+   revision="9112">
+<author>stanleyb</author>
+<date>2012-02-17T20:45:52.650419Z</date>
+<msg>added variables for userType and pageName for Google Analytics</msg>
+</logentry>
+<logentry
+   revision="9111">
+<author>stanleyb</author>
+<date>2012-02-17T20:42:46.286273Z</date>
+<msg>Added Google Analytics script for multiple userid, userType, and page name variables</msg>
+</logentry>
+<logentry
+   revision="8538">
+<author>stanleyb</author>
+<date>2012-02-03T15:38:57.602813Z</date>
+<msg>Release for 2-3-2012</msg>
+</logentry>
+<logentry
+   revision="8459">
+<author>stanleyb</author>
+<date>2012-02-02T15:33:39.623222Z</date>
+<msg>Added Prescriber Registration for ePrescribing</msg>
+</logentry>
+<logentry
+   revision="8458">
+<author>stanleyb</author>
+<date>2012-02-02T15:29:39.470905Z</date>
+<msg>infoMsg changes</msg>
+</logentry>
+<logentry
+   revision="8457">
+<author>stanleyb</author>
+<date>2012-02-02T15:29:06.222457Z</date>
+<msg>remove to fix project
+</msg>
+</logentry>
+<logentry
+   revision="8456">
+<author>stanleyb</author>
+<date>2012-02-02T15:28:08.919615Z</date>
+<msg>Changes for Prescriber Registration</msg>
+</logentry>
+<logentry
+   revision="8455">
+<author>stanleyb</author>
+<date>2012-02-02T15:27:46.238866Z</date>
+<msg>Changes for Prescriber Registration</msg>
+</logentry>
+<logentry
+   revision="8454">
+<author>stanleyb</author>
+<date>2012-02-02T15:27:07.270305Z</date>
+<msg>Changes for Prescriber Registration</msg>
+</logentry>
+<logentry
+   revision="8453">
+<author>stanleyb</author>
+<date>2012-02-02T15:15:09.642559Z</date>
+<msg>Changes for Prescriber Registration</msg>
+</logentry>
+<logentry
+   revision="8121">
+<author>brsanders</author>
+<date>2012-01-24T20:27:46.669809Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="8120">
+<author>brsanders</author>
+<date>2012-01-24T20:27:20.153505Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="8118">
+<author>brsanders</author>
+<date>2012-01-24T20:14:35.196423Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="8117">
+<author>brsanders</author>
+<date>2012-01-24T20:14:20.742928Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="8102">
+<author>brsanders</author>
+<date>2012-01-24T17:29:02.614030Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="8101">
+<author>brsanders</author>
+<date>2012-01-24T17:28:41.660369Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="8067">
+<author>brsanders</author>
+<date>2012-01-23T17:06:36.249880Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="8066">
+<author>brsanders</author>
+<date>2012-01-23T17:06:07.889779Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="8065">
+<author>brsanders</author>
+<date>2012-01-23T16:42:40.009988Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="8064">
+<author>brsanders</author>
+<date>2012-01-23T16:41:01.085581Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="8063">
+<author>brsanders</author>
+<date>2012-01-23T16:40:23.365865Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="5632">
+<author>macharya</author>
+<date>2011-11-17T19:33:27.138843Z</date>
+<msg>finallly ! Pace Portal merging changes from a different branch ! </msg>
+</logentry>
+<logentry
+   revision="5628">
+<author>stanleyb</author>
+<date>2011-11-17T18:50:44.138843Z</date>
+<msg>CAS changes</msg>
+</logentry>
+<logentry
+   revision="5627">
+<author>stanleyb</author>
+<date>2011-11-17T18:50:21.560718Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="5617">
+<author>stanleyb</author>
+<date>2011-11-17T18:35:20.466968Z</date>
+<msg>CAS looping change</msg>
+</logentry>
+<logentry
+   revision="4848">
+<author>stanleyb</author>
+<date>2011-11-02T14:03:34.178998Z</date>
+<msg>CAS changes - iterate through roles to find NH</msg>
+</logentry>
+<logentry
+   revision="4811">
+<author>stanleyb</author>
+<date>2011-11-01T15:39:06.699398Z</date>
+<msg>restored from 3192 due to accidental commit.</msg>
+</logentry>
+<logentry
+   revision="4810">
+<author>stanleyb</author>
+<date>2011-11-01T15:38:17.277523Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="4809">
+<author>stanleyb</author>
+<date>2011-11-01T15:24:36.761898Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="4808">
+<author>stanleyb</author>
+<date>2011-11-01T15:24:27.465023Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="4807">
+<author>stanleyb</author>
+<date>2011-11-01T15:20:29.246273Z</date>
+<msg>merged head with 3192 to correct accidental commit</msg>
+</logentry>
+<logentry
+   revision="4801">
+<author>macharya</author>
+<date>2011-11-01T14:18:24.496273Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="3192">
+<author>macharya</author>
+<date>2011-09-30T20:27:56.645463Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="1669">
+<author>stanleyb</author>
+<date>2011-08-02T15:36:12.021887Z</date>
+<msg>added commented ePrescribing link</msg>
+</logentry>
+<logentry
+   revision="1668">
+<author>stanleyb</author>
+<date>2011-08-02T15:35:36.677232Z</date>
+<msg>initial import</msg>
+</logentry>
+<logentry
+   revision="1667">
+<author>stanleyb</author>
+<date>2011-08-02T15:34:55.176170Z</date>
+<msg>added uses caches and contactInfo </msg>
+</logentry>
+<logentry
+   revision="1567">
+<author>stanleyb</author>
+<date>2011-07-28T20:30:22.141563Z</date>
+<msg>initial import</msg>
+</logentry>
+</log>
+
+

@@ -8,4 +8,7 @@
                  [org.clojure/tools.cli "0.3.1"]
                  [clj-time "0.6.0"]
                  [ring-server "0.3.1"]]
-  :main svn_stats.core)
+  :profiles {:dev {:source-paths ["dev" "src"]
+                   :dependencies [[org.clojure/tools.namespace "0.2.4"]
+                                  [org.clojure/java.classpath "0.2.2"]]}}
+  :main svnstats.system)

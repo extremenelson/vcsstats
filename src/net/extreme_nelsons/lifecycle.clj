@@ -1,4 +1,4 @@
-(ns net.extreme-nelsons.svnstats.lifecycle)
+(ns net.extreme-nelsons.lifecycle)
 
 (defprotocol LifeCycle
   (start [this])

@@ -1,5 +1,6 @@
-(ns system (:require [clj-time.core :refer [today]]
-                      [net.extreme-nelsons.svnstats.lifecycle :refer [start-system stop-system]]))
+(ns net.extreme-nelsons.system
+  (:require [clj-time.core :refer [today]]
+            [net.extreme-nelsons.lifecycle :refer [start-system stop-system]]))
 
 (def cli-options [
        ["-c" "--config " "Config file to use." :default "mma-loc.cfg"]

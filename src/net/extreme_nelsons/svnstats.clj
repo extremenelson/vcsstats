@@ -12,7 +12,6 @@
 (def dev-context {:svn-cmd "svn" :svn-list "list" :svn-log "log" :svn-log-xml "--xml"
                   :bifDate (formatters :date) :bifDateTime (formatters :date-time)})
 
-
 (defn check-out-revision
   "Checks out a specific revision of a line of code."
   [context location revision]
@@ -64,7 +63,7 @@
   (let [td (today)]
     (date-time (:year td) (:month td) (:day td))))
 
-((defn -main
+(defn -main
   "Application entry point"
   [& args]
   (let [{:keys [options arguments errors summary]} (parse-opts args cli-options)]
@@ -78,4 +77,4 @@
       "start" (server/start! options)
       "stop" (server/stop! options)
       "status" (server/status! options)
-      (exit 1 (usage summary))))))
+      (exit 1 (usage summary)))))

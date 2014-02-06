@@ -1,4 +1,4 @@
-(ns net.extreme-nelsons.user
+(ns user
   "Tools for interactive development with the REPL. This file should
   not be included in a production build of the application."
   (:require
@@ -11,8 +11,9 @@
    [clojure.string :as str]
    [clojure.test :as test]
    [clojure.tools.namespace.repl :refer (refresh refresh-all)]
-   [net.extreme-nelsons.system :refer (create-system)]
-   [net.extreme-nelsons.lifecycle :refer (start-system stop-system)]))
+   [net.extreme-nelsons.system :refer (create-system start-system stop-system)]
+;   [net.extreme-nelsons.lifecycle :refer (start-system stop-system)]
+   ))
 
 (def system
   "A Var containing an object representing the application under
@@ -29,6 +30,7 @@
 (defn start
   "Starts the system running, updates the Var #'system."
   []
+  (println "Starting system...")
   (start-system system)
   )
 
@@ -42,6 +44,7 @@
 (defn go
   "Initializes and starts the system running."
   []
+  (println "Running go...")
   (init)
   (start)
   :ready)

@@ -7,8 +7,9 @@
                  [org.clojure/data.zip "0.1.1"]
                  [org.clojure/tools.cli "0.3.1"]
                  [clj-time "0.6.0"]
-                 [ring-server "0.3.1"]]
+;                 [ring-server "0.3.1"]
+                 ]
   :profiles {:dev {:source-paths ["dev"]
-                   :dependencies [[org.clojure/tools.namespace "0.2.4"]
-                                  [org.clojure/java.classpath "0.2.2"]]}}
-  :main svnstats.system)
+         :dependencies [[org.clojure/tools.namespace "0.2.4"]
+                        [org.clojure/java.classpath "0.2.2"]  ]}}
+  :main net.extreme-nelsons.system)

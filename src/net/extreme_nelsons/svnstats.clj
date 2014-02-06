@@ -4,8 +4,7 @@
             [clojure.zip :as zip]
             [clojure.pprint :as pp]
             [clj-time.format :refer [formatters parse]]
-            [clj-time.core :refer [before? date-time]]
-            [clojure.tools.cli :refer [parse-opts]])
+            [clj-time.core :refer [before? date-time]])
   (:gen-class))
 
 (def prod-context)
@@ -63,18 +62,4 @@
   (let [td (today)]
     (date-time (:year td) (:month td) (:day td))))
 
-(defn -main
-  "Application entry point"
-  [& args]
-  (let [{:keys [options arguments errors summary]} (parse-opts args cli-options)]
-    ;; Handle help and error conditions
-    (cond
-      (:help options) (exit 0 (usage summary))
-      (not= (count arguments) 1) (exit 1 (usage summary))
-      errors (exit 1 (error-msg errors)))
-    ;; Execute program with options
-    (case (first arguments)
-      "start" (server/start! options)
-      "stop" (server/stop! options)
-      "status" (server/status! options)
-      (exit 1 (usage summary)))))
+

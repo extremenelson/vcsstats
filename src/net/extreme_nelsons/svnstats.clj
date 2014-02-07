@@ -4,15 +4,17 @@
             [clojure.zip :as zip]
             [clojure.pprint :as pp]
             [clj-time.format :refer [formatters parse]]
-            [clj-time.core :refer [before? date-time]])
+            [clj-time.core :refer [before? date-time]]
+            [clojure.string :refer [join]]
+            [clj-time.core :refer [today]]
+            [net.extreme-nelsons.state :refer [update-state get-state]])
   (:gen-class))
 
-(def prod-context)
-(def dev-context {:svn-cmd "svn" :svn-list "list" :svn-log "log" :svn-log-xml "--xml"
-                  :bifDate (formatters :date) :bifDateTime (formatters :date-time)})
+(def svncommands {:cmd "svn" :list "svn list" :log "svn log" :logxml "svn log --xml"})
+(formatters {:bifDate (formatters :date) :bifDateTime (formatters :date-time)})
 
 (defn check-out-revision
-  "Checks out a specific revision of a line of code."
+  "Checks out a specific revision of a li:bifDate (formatters :date) :bifDateTime (formatters :date-time)ne of code."
   [context location revision]
   (let [svn (:svn context)]
     (:out (sh svn "co" "-r" revision location))))
@@ -62,4 +64,20 @@
   (let [td (today)]
     (date-time (:year td) (:month td) (:day td))))
 
+(defn getDirContents
+  "Function to get the directory contents."
+  [path]
+  (let [config (get-state :config)
+        repo (:repo config)
+        basePath (:base config)]
+    (:out (sh (:list svncommands) (join "/" repo basePath path)))
+    )
+  )
 
+(defn process-repo
+  "Process a subversion repository"
+  []
+  (
+    (println "processing repo")
+    (println getDirContents ""))
+  )

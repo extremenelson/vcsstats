@@ -1,9 +1,9 @@
 (ns net.extreme-nelsons.system
   (:require [clj-time.core :refer [today]]
 ;            [net.extreme-nelsons.lifecycle :refer [start-system stop-system]]
-            [clojure.tools.cli :refer [parse-opts]]))
-
-(def state (atom {}))
+            [clojure.tools.cli :refer [parse-opts]]
+            [net.extreme-nelsons.svnstats :refer [process-repo]]
+            [net.extreme-nelsons.state :refer [set-state]]))
 
 (def cli-options [
        ["-c" "--config-file" "Config file to use." :default "svnstats.cfg"]
@@ -36,17 +36,6 @@
         "Please refer to the manual page for more information."]
        (clojure.string/join \newline)))
 
-(defn get-system
-  [key]
-  (@state key))
-
-(defn update-state [key val]
-  (swap! state assoc key val))
-
-(defn set-state [newsystem]
-  (println newsystem)
-  (reset! state newsystem))
-
 (defn create-config
   "Read in the configuration (Map in a file)"
   [filename]
@@ -61,9 +50,11 @@
 (defn start-system
   "Starts the system up."
   [options]
+  (println "Starting the system")
   (let [config (create-config (:config-file options))
         sysconfig (into options (create-system config))]
     (set-state sysconfig)
+    (process-repo)
   ))
 
 (defn stop-system

@@ -12,36 +12,37 @@
              [update-state get-state get-whole-state]])
   (:gen-class))
 
-(def svncommands {:svn "svn" :list "list" :log "log" :logxml "--xml"})
+(def svncommands {:svn "svn" :list "list" :log "log" :logxml "--xml" :co "co" :corev "-r"})
 (formatters {:bifDate (formatters :date) :bifDateTime (formatters :date-time)})
 
+(defn create-path
+  "Creates a path string"
+  [path]
+  (let [config (get-state :config) {:keys [repo base]} config]
+    (join "/" [repo base path])))
+
 (defn check-out-revision
-  "Checks out a specific revision of a li:bifDate (formatters :date) :bifDateTime (formatters :date-time)ne of code."
-  [context location revision]
-  (let [svn (:svn context)]
-    (:out (sh svn "co" "-r" revision location))))
+  "Checks out a specific revision of a line of code."
+  [path rev]
+  (let [{:keys [svn co corev]} svncommands]
+    (:out (sh svn co corev rev (create-path path)))))
   
-(defn get-project-log-xml
-  "Gets the log data for the given project."
-  [context svnloc p]
-  (let [svn (:svn context) svn-log (:svn-log context) svn-log-xml (:svn-log-xml context)]
-    (:out (sh svn svn-log svn-log-xml (str svnloc p)))))
+(defn get-log-xml
+  "Gets the log data in xml format for the given path."
+  [path]
+  (let [{:keys [svn log logxml]} svncommands]
+    (:out (sh svn log logxml (create-path path))
+  )))
 
 (defn convert-log-to-struct
   "Converts the project log xml to clojure structures"
   [p]
-  (xml/parse (java.io.ByteArrayInputStream. (.getBytes (get-project-log-xml p) "UTF-8"))))
+  (xml/parse (java.io.ByteArrayInputStream. (.getBytes (get-log-xml p) "UTF-8"))))
 
 (defn get-log-entries
   "Gets the log entries from the xml structure"
   [proj]
   (:content (first (xml-seq (convert-log-to-struct proj)))))
-
-(defn svn-list-dir
-  "Returns the content of the directory in Subversion"
-  [options repo path]
-  (let [svn (:svn options) svn-list (:svn-list options)]
-  (:out (sh svn svn-list path))))
 
 (defn get-revision-datetime
   "Gets the date timestamp from the xml structure"
@@ -66,16 +67,12 @@
   (let [td (today)]
     (date-time (:year td) (:month td) (:day td))))
 
-(defn getDirContents
+(defn list-dir
   "Function to get the directory contents."
   [path]
   (println )
-  (let [config (get-state :config)
-        repo (:repo config)
-        basePath (:base config)]
-    (:out (sh (:svn svncommands)
-              (:list svncommands)
-              (join "/" [repo basePath path])))
+  (let [{:keys [svn list]} svncommands]
+    (:out (sh svn list (create-path path)))
     )
   )
 
@@ -84,5 +81,6 @@
   []
   (
     (println "processing repo")
-    (println (getDirContents "")) 
+    (spit "xml.out" (get-log-xml ""))
+    (println "done processing")
   ))

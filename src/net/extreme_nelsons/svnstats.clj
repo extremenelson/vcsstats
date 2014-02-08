@@ -1,4 +1,5 @@
-(ns net.extreme-nelsons.svnstats (:require [clojure.java.shell :refer [sh]]
+(ns net.extreme-nelsons.svnstats
+  (:require [clojure.java.shell :refer [sh]]
             [clojure.string :refer [split-lines]]
             [clojure.xml :as xml]
             [clojure.zip :as zip]
@@ -7,10 +8,11 @@
             [clj-time.core :refer [before? date-time]]
             [clojure.string :refer [join]]
             [clj-time.core :refer [today]]
-            [net.extreme-nelsons.state :refer [update-state get-state]])
+            [net.extreme-nelsons.state :refer
+             [update-state get-state get-whole-state]])
   (:gen-class))
 
-(def svncommands {:cmd "svn" :list "svn list" :log "svn log" :logxml "svn log --xml"})
+(def svncommands {:svn "svn" :list "list" :log "log" :logxml "--xml"})
 (formatters {:bifDate (formatters :date) :bifDateTime (formatters :date-time)})
 
 (defn check-out-revision
@@ -67,10 +69,13 @@
 (defn getDirContents
   "Function to get the directory contents."
   [path]
+  (println )
   (let [config (get-state :config)
         repo (:repo config)
         basePath (:base config)]
-    (:out (sh (:list svncommands) (join "/" repo basePath path)))
+    (:out (sh (:svn svncommands)
+              (:list svncommands)
+              (join "/" [repo basePath path])))
     )
   )
 
@@ -79,5 +84,5 @@
   []
   (
     (println "processing repo")
-    (println getDirContents ""))
-  )
+    (println (getDirContents "")) 
+  ))

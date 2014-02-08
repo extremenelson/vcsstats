@@ -5,7 +5,6 @@
 (defn get-state
   "Gets a keyed value from the system var"
   [key]
-  (println "get key value from system")
   (@state key))
 
 (defn update-state [key val]
@@ -13,3 +12,6 @@
 
 (defn set-state [newstate]
   (reset! state newstate))
+
+(defn get-whole-state []
+  (@state))

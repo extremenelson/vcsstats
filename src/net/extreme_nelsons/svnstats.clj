@@ -9,7 +9,9 @@
             [clojure.string :refer [join]]
             [clj-time.core :refer [today]]
             [net.extreme-nelsons.state :refer
-             [update-state get-state get-whole-state]])
+             [update-state get-state get-whole-state]]
+            [clojure.data.zip.xml :as zip-xml]
+            [clojure.pprint :refer [pprint]])
   (:gen-class))
 
 (def svncommands {:svn "svn" :list "list" :log "log" :logxml "--xml" :co "co" :corev "-r"})
@@ -34,7 +36,7 @@
     (:out (sh svn log logxml (create-path path))
   )))
 
-(defn convert-log-to-struct
+(defn convert-log-to-xml
   "Converts the project log xml to clojure structures"
   [p]
   (xml/parse (java.io.ByteArrayInputStream. (.getBytes (get-log-xml p) "UTF-8"))))
@@ -42,7 +44,7 @@
 (defn get-log-entries
   "Gets the log entries from the xml structure"
   [proj]
-  (:content (first (xml-seq (convert-log-to-struct proj)))))
+  (:content (first (xml-seq (convert-log-to-xml proj)))))
 
 (defn get-revision-datetime
   "Gets the date timestamp from the xml structure"
@@ -80,7 +82,10 @@
   "Process a subversion repository"
   []
   (
-    (println "processing repo")
-    (spit "xml.out" (get-log-xml ""))
-    (println "done processing")
-  ))
+   (println "processing repo")
+   (let [parsed-xml (zip/xml-zip (convert-log-to-xml ""))]
+     (println "got output")
+     (spit "out.xml" parsed-xml)
+     (println (zip-xml/xml-> :logentry))
+     (println "Finished processing")
+     )))

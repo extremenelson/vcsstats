@@ -95,14 +95,38 @@
 
 (defn get-author
   "Function to extract the author name from a log entry"
-  [x]
-  (println (first (:content (first (:content x)))))
-  (lower-case (first (:content (first (:content x))))))
+  [entry]
+  (lower-case (first (:content (first (:content entry))))))
 
-(defn get-authors
+(defn get-revision
+  ""
+  [entry]
+  (:revision (:attrs entry)))
+
+(defn get-date
+  ""
+  [entry]
+  (:content (second (:content entry))))
+
+(defn get-msg
+  ""
+  [entry]
+  (:content (last (:content entry))))
+
+(defn process-logentry
+  "Extracts all the information from a logentry"
+  [entry]
+  (let [author (get-author entry)
+        revision (get-revision entry)
+        revdate (get-date entry)
+        msg (get-msg entry)]
+    {:author author :entry {:revision revision :revdate revdate :msg msg}}))
+
+(defn process-log
+  "Pulls all the needed information from a logentry"
   []
-  (let [xml-log (get-state :log-as-xml)]
-    (set (map get-author (:content xml-log)))))
+  (let [xml-logs (:content (get-state :log-as-xml)) ]
+    (map process-logentry xml-logs)))
 
 (defn process-repo
   "Process a subversion repository"
@@ -112,7 +136,7 @@
    (store-xml "")
    (println "processing data")
    (let [start (System/nanoTime)]
-     (println (get-authors))
+     (println (process-log))
      (println "Took ")
      (println (/ (- (System/nanoTime) start) 1000000000.0) ))
    (println "Finished processing")

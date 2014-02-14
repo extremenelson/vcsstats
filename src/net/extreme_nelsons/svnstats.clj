@@ -1,6 +1,6 @@
 (ns net.extreme-nelsons.svnstats
   (:require [clojure.java.shell :refer [sh]]
-            [clojure.string :refer [split-lines]]
+            [clojure.string :refer [split-lines lower-case]]
             [clojure.xml :as xml]
             [clojure.zip :as zip]
             [clojure.pprint :as pp]
@@ -78,14 +78,42 @@
     )
   )
 
+(defn store-xml
+  "Function to store the parsed xml log into the system state for all subsequent functions"
+  [path]
+  (update-state :log-as-xml (convert-log-to-xml path)))
+
+(defn get-committers
+  "Function to get a list of all the committers"
+  []
+  (let [xml-log (get-state :log-as-xml) committers '()]
+    (doseq [x (xml-seq xml-log)
+            :when (= :author (:tag x))]
+      (cons committers (lower-case (first (:content x))))
+      ))
+  )
+
+(defn get-author
+  "Function to extract the author name from a log entry"
+  [x]
+  (println (first (:content (first (:content x)))))
+  (lower-case (first (:content (first (:content x))))))
+
+(defn get-authors
+  []
+  (let [xml-log (get-state :log-as-xml)]
+    (set (map get-author (:content xml-log)))))
+
 (defn process-repo
   "Process a subversion repository"
   []
   (
-   (println "processing repo")
-   (let [parsed-xml (zip/xml-zip (convert-log-to-xml ""))]
-     (println "got output")
-     (spit "out.xml" parsed-xml)
-     (println (zip-xml/xml-> :logentry))
-     (println "Finished processing")
-     )))
+   (println "loading repo data")
+   (store-xml "")
+   (println "processing data")
+   (let [start (System/nanoTime)]
+     (println (get-authors))
+     (println "Took ")
+     (println (/ (- (System/nanoTime) start) 1000000000.0) ))
+   (println "Finished processing")
+   ))

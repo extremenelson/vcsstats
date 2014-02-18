@@ -7,6 +7,7 @@
                  [org.clojure/data.zip "0.1.1"]
                  [org.clojure/tools.cli "0.3.1"]
                  [clj-time "0.6.0"]
+                 [org.clojure/data.csv "0.1.2"]
 ;                 [ring-server "0.3.1"]
                  ]
   :profiles {:dev {:source-paths ["dev"]

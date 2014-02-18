@@ -1,6 +1,6 @@
 (ns net.extreme-nelsons.svnstats
   (:require [clojure.java.shell :refer [sh]]
-            [clojure.string :refer [split-lines lower-case]]
+            [clojure.string :refer [split-lines lower-case trim]]
             [clojure.xml :as xml]
             [clojure.zip :as zip]
             [clojure.pprint :as pp]
@@ -11,7 +11,10 @@
             [net.extreme-nelsons.state :refer
              [update-state get-state get-whole-state]]
             [clojure.data.zip.xml :as zip-xml]
-            [clojure.pprint :refer [pprint]])
+            [clojure.pprint :refer [pprint]]
+            [clojure.data.csv :as csv]
+            [clojure.java.io :as io]
+            [clojure.walk :refer [postwalk]])
   (:gen-class))
 
 (def svncommands {:svn "svn" :list "list" :log "log" :logxml "--xml" :co "co" :corev "-r"})
@@ -120,14 +123,26 @@
         revision (get-revision entry)
         revdate (get-date entry)
         msg (get-msg entry)]
-    {:author author :entry {:revision revision :revdate revdate :msg msg}}))
+    {author {:revnum revision :revdate revdate :revmsg msg}}))
+
+(defn aggregate-all
+  ""
+  [themap]
+  (into {} (for [k (into #{} (mapcat keys themap))
+               :let [obj (Object.)]]
+           [k (filter (partial not= obj)
+                      (map #(get % k obj) themap))])))
 
 (defn process-log
   "Pulls all the needed information from a logentry"
   []
   (let [xml-logs (:content (get-state :log-as-xml)) ]
-    (map process-logentry xml-logs)))
+    (aggregate-all (map process-logentry xml-logs))))
 
+(defn write-csv
+  ""
+  [themap]
+  )
 (defn process-repo
   "Process a subversion repository"
   []
@@ -136,8 +151,15 @@
    (store-xml "")
    (println "processing data")
    (let [start (System/nanoTime)]
-     (println (process-log))
+     (update-state :processed-data (process-log))
      (println "Took ")
-     (println (/ (- (System/nanoTime) start) 1000000000.0) ))
+     (println (/ (- (System/nanoTime) start) 1000000000.0))
+     )
+   (spit "out.xml" (get-state :processed-data))
+   (pprint (take 4 (get-state :processed-data)))
+   (pprint (keys (get-state :processed-data)))
+   (println "=================")
+   (with-open [out-file (io/writer "out.csv")]
+     (csv/write-csv out-file (postwalk identity (get-state :processed-data))))
    (println "Finished processing")
    ))

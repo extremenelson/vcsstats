@@ -129,7 +129,7 @@
         revision (get-revision entry)
         revdate (get-date entry)
         msg (get-msg entry)]
-    {author {:revnum revision :revdate revdate :revmsg msg}}))
+    {:author author :revnum revision :revdate revdate :revmsg msg}))
 
 (defn aggregate-all
   ""
@@ -143,12 +143,12 @@
   "Pulls all the needed information from a logentry"
   []
   (let [xml-logs (:content (get-state :log-as-xml)) ]
-    (aggregate-all (map process-logentry xml-logs))))
+    (map process-logentry xml-logs)))
 
 (defn write-csv
   ""
   [themap]
-  (let [mapset (incant/to-dataset themap)]
+  (let [mapset (incant/to-dataset (sort-by :author themap))]
     (excel/save-xls mapset "svnstats.xls")))
 
 (defn process-repo
@@ -167,8 +167,8 @@
 ;   (spit "out.xml" (get-state :processed-data))
    (println "=================")
 ;(with-open [out-file (io/writer "out.csv")]
-;     (csv/write-csv out-file (postwalk identity (get-state
-                                        ;     :processed-data))))
+                                        ;    (csv/write-csv out-file (postwalk identity (get-state
+                                        ;    :processed-data)))
    (write-csv (get-state :processed-data))
    (println "Finished processing")
    ))

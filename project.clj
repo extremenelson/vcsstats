@@ -8,6 +8,7 @@
                  [org.clojure/tools.cli "0.3.1"]
                  [clj-time "0.6.0"]
                  [org.clojure/data.csv "0.1.2"]
+                 [incanter "1.5.4"]
 ;                 [ring-server "0.3.1"]
                  ]
   :profiles {:dev {:source-paths ["dev"]

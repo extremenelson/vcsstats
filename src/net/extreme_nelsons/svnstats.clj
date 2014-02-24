@@ -14,7 +14,9 @@
             [clojure.pprint :refer [pprint]]
             [clojure.data.csv :as csv]
             [clojure.java.io :as io]
-            [clojure.walk :refer [postwalk]])
+            [clojure.walk :refer [postwalk]]
+            [incanter.core :as incant]
+            [incanter.excel :as excel])
   (:gen-class))
 
 (def svncommands {:svn "svn" :list "list" :log "log" :logxml "--xml" :co "co" :corev "-r"})
@@ -32,12 +34,16 @@
   (let [{:keys [svn co corev]} svncommands]
     (:out (sh svn co corev rev (create-path path)))))
   
-(defn get-log-xml
+(defn get-log-xml2
   "Gets the log data in xml format for the given path."
   [path]
   (let [{:keys [svn log logxml]} svncommands]
     (:out (sh svn log logxml (create-path path))
   )))
+
+(defn get-log-xml
+  [p]
+  (slurp "svnxml.out"))
 
 (defn convert-log-to-xml
   "Converts the project log xml to clojure structures"
@@ -142,7 +148,9 @@
 (defn write-csv
   ""
   [themap]
-  )
+  (let [mapset (incant/to-dataset themap)]
+    (excel/save-xls mapset "svnstats.xls")))
+
 (defn process-repo
   "Process a subversion repository"
   []
@@ -152,14 +160,15 @@
    (println "processing data")
    (let [start (System/nanoTime)]
      (update-state :processed-data (process-log))
-     (println "Took ")
-     (println (/ (- (System/nanoTime) start) 1000000000.0))
+     (print "Took ")
+     (print (/ (- (System/nanoTime) start) 1000000000.0))
+     (println " seconds")
      )
-   (spit "out.xml" (get-state :processed-data))
-   (pprint (take 4 (get-state :processed-data)))
-   (pprint (keys (get-state :processed-data)))
+;   (spit "out.xml" (get-state :processed-data))
    (println "=================")
-   (with-open [out-file (io/writer "out.csv")]
-     (csv/write-csv out-file (postwalk identity (get-state :processed-data))))
+;(with-open [out-file (io/writer "out.csv")]
+;     (csv/write-csv out-file (postwalk identity (get-state
+                                        ;     :processed-data))))
+   (write-csv (get-state :processed-data))
    (println "Finished processing")
    ))

@@ -1,5 +1,5 @@
 (defproject svn_stats "0.1.0-SNAPSHOT"
-  :description "Web application to provide a variety of statistics from a Subversion server."
+  :description "Application to provide a variety of statistics from a Subversion server."
   :url "http://example.com/FIXME"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
@@ -11,7 +11,9 @@
                  [incanter "1.5.4"]
 ;                 [ring-server "0.3.1"]
                  ]
+  :main net.extreme-nelsons.system
   :profiles {:dev {:source-paths ["dev"]
-         :dependencies [[org.clojure/tools.namespace "0.2.4"]
-                        [org.clojure/java.classpath "0.2.2"]  ]}}
-  :main net.extreme-nelsons.system)
+                   :dependencies [[org.clojure/tools.namespace "0.2.4"]
+                                  [org.clojure/java.classpath "0.2.2"]]}
+             :uberjar {:aot [net.extreme-nelsons.system]}}
+  :uberjar-name "svnstats.jar")

@@ -34,16 +34,12 @@
   (let [{:keys [svn co corev]} svncommands]
     (:out (sh svn co corev rev (create-path path)))))
   
-(defn get-log-xml2
+(defn get-log-xml
   "Gets the log data in xml format for the given path."
   [path]
   (let [{:keys [svn log logxml]} svncommands]
     (:out (sh svn log logxml (create-path path))
   )))
-
-(defn get-log-xml
-  [p]
-  (slurp "svnxml.out"))
 
 (defn convert-log-to-xml
   "Converts the project log xml to clojure structures"
@@ -164,11 +160,7 @@
      (print (/ (- (System/nanoTime) start) 1000000000.0))
      (println " seconds")
      )
-;   (spit "out.xml" (get-state :processed-data))
    (println "=================")
-;(with-open [out-file (io/writer "out.csv")]
-                                        ;    (csv/write-csv out-file (postwalk identity (get-state
-                                        ;    :processed-data)))
    (write-csv (get-state :processed-data))
    (println "Finished processing")
    ))

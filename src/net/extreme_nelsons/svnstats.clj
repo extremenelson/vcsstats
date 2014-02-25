@@ -19,7 +19,7 @@
             [incanter.excel :as excel])
   (:gen-class))
 
-(def svncommands {:svn "svn" :list "list" :log "log" :logxml "--xml" :co "co" :corev "-r"})
+(def svncommands {:svn "svn" :list "list" :log "log" :verbose "-v" :logxml "--xml" :co "co" :corev "-r"})
 (formatters {:bifDate (formatters :date) :bifDateTime (formatters :date-time)})
 
 (defn create-path
@@ -37,19 +37,24 @@
 (defn get-log-xml
   "Gets the log data in xml format for the given path."
   [path]
-  (let [{:keys [svn log logxml]} svncommands]
-    (:out (sh svn log logxml (create-path path))
+  (let [{:keys [svn log verbose logxml]} svncommands]
+    (:out (sh svn log verbose logxml (create-path path))
   )))
 
-(defn convert-log-to-xml
+(defn get-log-xml2
+  "fake input"
+  [p]
+  (slurp "xmllog.out"))
+
+(defn convert-xml-to-struct
   "Converts the project log xml to clojure structures"
   [p]
-  (xml/parse (java.io.ByteArrayInputStream. (.getBytes (get-log-xml p) "UTF-8"))))
+  (xml/parse (java.io.ByteArrayInputStream. (.getBytes (get-log-xml2 p) "UTF-8"))))
 
 (defn get-log-entries
   "Gets the log entries from the xml structure"
   [proj]
-  (:content (first (xml-seq (convert-log-to-xml proj)))))
+  (:content (first (xml-seq (convert-xml-to-struct proj)))))
 
 (defn get-revision-datetime
   "Gets the date timestamp from the xml structure"
@@ -86,7 +91,7 @@
 (defn store-xml
   "Function to store the parsed xml log into the system state for all subsequent functions"
   [path]
-  (update-state :log-as-xml (convert-log-to-xml path)))
+  (update-state :log-as-xml (convert-xml-to-struct path)))
 
 (defn get-committers
   "Function to get a list of all the committers"
@@ -118,14 +123,28 @@
   [entry]
   (:content (last (:content entry))))
 
+(defn process-file-entry
+  ""
+  [fentry]
+  (let [attrs (:attrs fentry)]
+    (conj attrs {:path (:content fentry)})))
+
+(defn process-files
+  "Function to process the file paths from a log entry"
+  [entry]
+  (let [file-info (:content (nth (:content entry) 2 ))]
+    (into [] (map process-file-entry file-info))))
+
 (defn process-logentry
   "Extracts all the information from a logentry"
   [entry]
   (let [author (get-author entry)
         revision (get-revision entry)
         revdate (get-date entry)
-        msg (get-msg entry)]
-    {:author author :revnum revision :revdate revdate :revmsg msg}))
+        msg (get-msg entry)
+        fileinfo (process-files entry)]
+    (pprint fileinfo)
+    {:author author :revnum revision :revdate revdate :revmsg msg :files fileinfo}))
 
 (defn aggregate-all
   ""
@@ -151,16 +170,20 @@
   "Process a subversion repository"
   []
   (
-   (println "loading repo data")
-   (store-xml "")
-   (println "processing data")
-   (let [start (System/nanoTime)]
-     (update-state :processed-data (process-log))
+   (println "Loading repo data")
+   (let [start-load (System/nanoTime)]
+     (store-xml "")
      (print "Took ")
-     (print (/ (- (System/nanoTime) start) 1000000000.0))
+     (print (/ (- (System/nanoTime) start-load) 1000000000.0))
      (println " seconds")
+     (println "Processing data")
+     (let [start-processing (System/nanoTime)]
+       (update-state :processed-data (process-log))
+       (print "Took ")
+       (print (/ (- (System/nanoTime) start-processing) 1000000000.0))
+       (println " seconds")
      )
-   (println "=================")
-   (write-csv (get-state :processed-data))
-   (println "Finished processing")
-   ))
+     (println "=================")
+     (write-csv (get-state :processed-data))
+     (println "Finished processing")
+   )))

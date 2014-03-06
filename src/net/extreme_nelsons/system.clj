@@ -3,7 +3,11 @@
 ;            [net.extreme-nelsons.lifecycle :refer [start-system stop-system]]
             [clojure.tools.cli :refer [parse-opts]]
             [net.extreme-nelsons.svnstats :refer [process-repo]]
-            [net.extreme-nelsons.state :refer [set-state]]))
+            [net.extreme-nelsons.state :refer [set-state]]
+            [net.extreme-nelsons.statgatherer :refer [get-authors get-revision-list get-n-days-from-today timeperiod-stats]]
+            [clojure.pprint :refer [pprint]]
+            [clojure.string :refer [join]]
+))
 
 (def cli-options [
        ["-c" "--config-file" "Config file to use." :default "svnstats.cfg"]
@@ -28,6 +32,7 @@
         "Options:"
         options-summary
         ""
+        
         "Actions:"
         "  start    Start a new server"
         "  stop     Stop an existing server"
@@ -47,6 +52,14 @@
   [config]
   {:config config})
 
+(defn dump-entry
+  ""
+  [entry]
+  (println "======== Dumping Entry =====")
+  (let [revnum (:revnum entry) revdate (:revdate entry)]
+    (println (join " " [revnum revdate])))
+  (println "===== End of dump ====="))
+
 (defn start-system
   "Starts the system up."
   [options]
@@ -54,25 +67,17 @@
   (let [config (create-config (:config-file options))
         sysconfig (into options (create-system config))]
     (set-state sysconfig)
-    (process-repo)
+    (process-repo) 
+    (println "Testing statistics")
+    (let [results (get-n-days-from-today 20)]
+      (map dump-entry  results))
+    (timeperiod-stats 20)
   ))
 
 (defn stop-system
   "Closes the system down."
   [options]
   nil)
-
-;(defn create-system [cfg]
-;  {:jetty (create-jetty-server cfg)
-;   :rabbit (create-rabbitmq-channel cfg)
-;   :order [:rabbit :jetty])
-
-;(defn app-main []
-;(let [cfg (create-config)
-;      system (create-system cfg)]
-;  (start-system system)
-  ;; (.await) / (.join) / (deref) etc...
-                                        ;  (stop-system system)))
 
 (defn -main
   "Application entry point"

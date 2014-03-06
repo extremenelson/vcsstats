@@ -4,10 +4,9 @@
             [clojure.xml :as xml]
             [clojure.zip :as zip]
             [clojure.pprint :as pp]
-            [clj-time.format :refer [formatters parse]]
-            [clj-time.core :refer [before? date-time]]
+            [clj-time.format :refer [formatters parse parse-local]]
+            [clj-time.core :refer [before? date-time today]]
             [clojure.string :refer [join]]
-            [clj-time.core :refer [today]]
             [net.extreme-nelsons.state :refer
              [update-state get-state get-whole-state]]
             [clojure.data.zip.xml :as zip-xml]
@@ -20,7 +19,8 @@
   (:gen-class))
 
 (def svncommands {:svn "svn" :list "list" :log "log" :verbose "-v" :logxml "--xml" :co "co" :corev "-r"})
-(formatters {:bifDate (formatters :date) :bifDateTime (formatters :date-time)})
+(def bifDate (formatters :date))
+(def bifDateTime (formatters :date-time))
 
 (defn create-path
   "Creates a path string"
@@ -60,7 +60,7 @@
   "Gets the date timestamp from the xml structure"
   [context struc]
   (let [bifDateTime (:bifDateTime context)]
-    (parse bifDateTime (get (:content (get (:content struc) 1)) 0))))
+    (parse-local bifDateTime (get (:content (get (:content struc) 1)) 0))))
 
 (defn get-revision-id
   "Gets the revision id from the xml structure"
@@ -73,16 +73,9 @@
   (let [dt (parse (:bifDate context) find-date)]
     (get-revision-id (first (filter #(before? (get-revision-datetime %) dt) (get-log-entries proj))))))
 
-(defn parse-todays-date
-  "Get todays date as a datetime object as of midnight."
-  []
-  (let [td (today)]
-    (date-time (:year td) (:month td) (:day td))))
-
 (defn list-dir
   "Function to get the directory contents."
   [path]
-  (println )
   (let [{:keys [svn list]} svncommands]
     (:out (sh svn list (create-path path)))
     )
@@ -116,7 +109,8 @@
 (defn get-date
   ""
   [entry]
-  (:content (second (:content entry))))
+  (parse-local bifDateTime (join (:content (second (:content entry)))))
+  )
 
 (defn get-msg
   ""
@@ -143,7 +137,6 @@
         revdate (get-date entry)
         msg (get-msg entry)
         fileinfo (process-files entry)]
-    (pprint fileinfo)
     {:author author :revnum revision :revdate revdate :revmsg msg :files fileinfo}))
 
 (defn aggregate-all
@@ -169,21 +162,5 @@
 (defn process-repo
   "Process a subversion repository"
   []
-  (
-   (println "Loading repo data")
-   (let [start-load (System/nanoTime)]
-     (store-xml "")
-     (print "Took ")
-     (print (/ (- (System/nanoTime) start-load) 1000000000.0))
-     (println " seconds")
-     (println "Processing data")
-     (let [start-processing (System/nanoTime)]
-       (update-state :processed-data (process-log))
-       (print "Took ")
-       (print (/ (- (System/nanoTime) start-processing) 1000000000.0))
-       (println " seconds")
-     )
-     (println "=================")
-     (write-csv (get-state :processed-data))
-     (println "Finished processing")
-   )))
+  (store-xml "")
+  (update-state :processed-data (process-log)))

@@ -44,8 +44,8 @@
 (defn get-all-in-date-range
   ""
   [start end]
-  (let [state (get-state :processed-data)]
-    (map #(when (within? end start (org.joda.time.LocalDate. (:revdate %1))) %1) state)
+  (let [data (get-state :processed-data)]
+    (map #(when-not (= nil (within? end start (org.joda.time.LocalDate. (:revdate %1)))) %1) data)
     )
   )
 
@@ -53,14 +53,23 @@
   ""
   [num-days]
   (let [end (minus- (today) (days num-days))]
-    (println (join " " [num-days end]))
     (get-all-in-date-range (today) end)
     )
+  )
+
+(defn process-entry
+  ""
+  [entry]
   )
 
 (defn timeperiod-stats
   ""
   [numdays]
   (let [rawdata (get-n-days-from-today numdays)
-        authors (into #{} (map :author rawdata))]
-    (pprint authors)))
+        authors (into #{} (map :author rawdata))
+        num-commits (count rawdata)]
+    (pprint rawdata)
+    (pprint authors)
+    (pprint num-commits)
+    )
+  )

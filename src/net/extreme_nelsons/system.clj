@@ -69,9 +69,7 @@
     (set-state sysconfig)
     (process-repo) 
     (println "Testing statistics")
-    (let [results (get-n-days-from-today 20)]
-      (map dump-entry  results))
-    (timeperiod-stats 20)
+    (pprint (timeperiod-stats 10))
   ))
 
 (defn stop-system

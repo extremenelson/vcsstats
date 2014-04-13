@@ -97,7 +97,7 @@
   [numdays]
   (let [rawdata (get-n-days-from-today numdays)
         authors (get-authors rawdata)
-        total-commits (count rawdata)]
+        total-commits (get-num-commits rawdata)]
     (println "Stats following:")
     (pprint (take-last 2 rawdata))
     (pprint authors)

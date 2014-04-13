@@ -74,17 +74,16 @@
   (get-n-days-from-today numdays))
 
 (defn get-authors
-  ""
+  "Function to get the set of authors"
   [data]
-  ()
-  )
+  (into #{} (map :author data)))
 
 (defn get-author-stats
   ""
   [theauthor data]
   (println "Getting stats for " theauthor)
   (let [author-commits (filter #(= theauthor (:author %))  data)]
-    (pprint author-commits))
+    (println (count author-commits)))
   )
 
 (defn get-num-commits
@@ -97,12 +96,12 @@
   ""
   [numdays]
   (let [rawdata (get-n-days-from-today numdays)
-        authors (into #{} (map :author rawdata))
-        num-commits (count rawdata)]
+        authors (get-authors rawdata)
+        total-commits (count rawdata)]
     (println "Stats following:")
     (pprint (take-last 2 rawdata))
     (pprint authors)
-    (pprint num-commits)
+    (pprint total-commits)
     (get-author-stats (first authors) rawdata)
   )
 )

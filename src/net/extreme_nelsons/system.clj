@@ -25,7 +25,8 @@
   (System/exit status))
 
 (defn usage [options-summary]
-  (->> ["This application collects various statistics from a subversion server."
+  (->> ["This application collects various statistics from a subversion server
+."
         ""
         "Usage: svnstats [options] action"
         ""
@@ -69,7 +70,7 @@
     (set-state sysconfig)
     (process-repo) 
     (println "Testing statistics")
-    (pprint (timeperiod-stats 10))
+    (pprint (timeperiod-stats 50))
   ))
 
 (defn stop-system

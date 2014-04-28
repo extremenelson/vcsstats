@@ -9,6 +9,8 @@
             [clojure.string :refer [join]]
 ))
 
+;; mapcat
+
 (def cli-options [
        ["-c" "--config-file" "Config file to use." :default "svnstats.cfg"]
        ["-o" "--output" "File to write the output to." :default "./svnstats.out"]

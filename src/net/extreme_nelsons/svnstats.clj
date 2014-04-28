@@ -159,8 +159,16 @@
   (let [mapset (incant/to-dataset (sort-by :author themap))]
     (excel/save-xls mapset "svnstats.xls")))
 
+(defn testmap
+  ""
+  [data]
+  (pprint (map #(get-revision %) data)))
+
 (defn process-repo
   "Process a subversion repository"
   []
+  (println "---------------------")
+  (testmap (take 4 (:content (convert-xml-to-struct "")))) 
+  (println "---------------------")
   (store-xml "")
   (update-state :processed-data (process-log)))

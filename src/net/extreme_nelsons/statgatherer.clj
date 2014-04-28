@@ -7,6 +7,8 @@
             [net.extreme-nelsons.state :refer
              [update-state get-state get-whole-state]]))
 
+;; use frequencies function here
+
 (def bifDate (formatters :date))
 (def bifDateTime (formatters :date-time))
 
@@ -50,8 +52,7 @@
   [start end]
   (let [data (get-state :processed-data)]
     (map #(when-not (= false (revdate-cond end start %1)) %1) (take 10 data))
-  )
-)
+  ))
 
 (defn get-n-days-from-today
   ""
@@ -59,9 +60,7 @@
   (let [end (minus- (today) (days num-days))]
     (println "end " end)
     (pprint (take 4 (get-all-in-date-range (today) end)))
-    (get-all-in-date-range (today) end)
-  )
-)
+    (get-all-in-date-range (today) end)))
 
 (defn process-entry
   ""
@@ -83,14 +82,12 @@
   [theauthor data]
   (println "Getting stats for " theauthor)
   (let [author-commits (filter #(= theauthor (:author %))  data)]
-    (println (count author-commits)))
-  )
+    (println (count author-commits))))
 
 (defn get-num-commits
   ""
   [data]
-  (count data)
-  )
+  (count data))
 
 (defn timeperiod-stats
   ""
@@ -102,6 +99,4 @@
     (pprint (take-last 2 rawdata))
     (pprint authors)
     (pprint total-commits)
-    (get-author-stats (first authors) rawdata)
-  )
-)
+    (get-author-stats (first authors) rawdata)))

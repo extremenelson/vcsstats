@@ -1,26 +1,11 @@
-(ns net.extreme-nelsons.svnstats
+(ns net.extreme-nelsons.svnserver
   (:require [clojure.java.shell :refer [sh]]
-            [clojure.string :refer [split-lines lower-case trim]]
-            [clojure.xml :as xml]
-            [clojure.zip :as zip]
-            [clojure.pprint :as pp]
-            [clj-time.format :refer [formatters parse parse-local]]
-            [clj-time.core :refer [before? date-time today]]
             [clojure.string :refer [join]]
-            [net.extreme-nelsons.state :refer
-             [update-state get-state get-whole-state]]
-            [clojure.data.zip.xml :as zip-xml]
             [clojure.pprint :refer [pprint]]
-            [clojure.data.csv :as csv]
-            [clojure.java.io :as io]
-            [clojure.walk :refer [postwalk]]
-            [incanter.core :as incant]
-            [incanter.excel :as excel])
+            [net.extreme-nelsons.state :refer [get-state]])
   (:gen-class))
 
 (def svncommands {:svn "svn" :list "list" :log "log" :verbose "-v" :logxml "--xml" :co "co" :corev "-r"})
-(def bifDate (formatters :date))
-(def bifDateTime (formatters :date-time))
 
 (defn create-path
   "Creates a path string"
@@ -33,7 +18,13 @@
   [path rev]
   (let [{:keys [svn co corev]} svncommands]
     (:out (sh svn co corev rev (create-path path)))))
-  
+
+(defn list-dir
+  "Function to get the directory contents."
+  [path]
+  (let [{:keys [svn list]} svncommands]
+    (:out (sh svn list (create-path path)))))
+
 (defn get-log-xml
   "Gets the log data in xml format for the given path."
   [path]
@@ -43,5 +34,5 @@
 
 (defn get-log-xml2
   "fake input"
-  [p]
+  [path]
   (slurp "xmllog.out"))

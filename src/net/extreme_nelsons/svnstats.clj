@@ -3,12 +3,11 @@
             [clojure.string :refer [split-lines lower-case trim]]
             [clojure.xml :as xml]
             [clojure.zip :as zip]
-            [clojure.pprint :as pp]
             [clj-time.format :refer [formatters parse parse-local]]
             [clj-time.core :refer [before? date-time today]]
-            [clojure.string :refer [join]]
             [net.extreme-nelsons.state :refer
              [update-state get-state get-whole-state]]
+            [net.extreme-nelsons.svnserver :refer [get-log-xml2]]
             [clojure.data.zip.xml :as zip-xml]
             [clojure.pprint :refer [pprint]]
             [clojure.data.csv :as csv]
@@ -18,11 +17,13 @@
             [incanter.excel :as excel])
   )
 
+(def bifDate (formatters :date))
+(def bifDateTime (formatters :date-time))
 
 (defn convert-xml-to-struct
   "Converts the project log xml to clojure structures"
-  [p]
-  (xml/parse (java.io.ByteArrayInputStream. (.getBytes (get-log-xml2 p) "UTF-8"))))
+  [path]
+  (:content (xml/parse (java.io.ByteArrayInputStream. (.getBytes (get-log-xml2 path) "UTF-8")))))
 
 (defn get-log-entries
   "Gets the log entries from the xml structure"
@@ -31,9 +32,8 @@
 
 (defn get-revision-datetime
   "Gets the date timestamp from the xml structure"
-  [context struc]
-  (let [bifDateTime (:bifDateTime context)]
-    (parse-local bifDateTime (get (:content (get (:content struc) 1)) 0))))
+  [struc]
+  (parse-local bifDateTime (get (:content (get (:content struc) 1)) 0)))
 
 (defn get-revision-id
   "Gets the revision id from the xml structure"
@@ -46,15 +46,7 @@
   (let [dt (parse (:bifDate context) find-date)]
     (get-revision-id (first (filter #(before? (get-revision-datetime %) dt) (get-log-entries proj))))))
 
-(defn list-dir
-  "Function to get the directory contents."
-  [path]
-  (let [{:keys [svn list]} svncommands]
-    (:out (sh svn list (create-path path)))
-    )
-  )
-
-(defn store-xml
+(defn process-xml
   "Function to store the parsed xml log into the system state for all subsequent functions"
   [path]
   (update-state :log-as-xml (convert-xml-to-struct path)))
@@ -65,9 +57,7 @@
   (let [xml-log (get-state :log-as-xml) committers '()]
     (doseq [x (xml-seq xml-log)
             :when (= :author (:tag x))]
-      (cons committers (lower-case (first (:content x))))
-      ))
-  )
+      (cons committers (lower-case (first (:content x)))))))
 
 (defn get-author
   "Function to extract the author name from a log entry"
@@ -82,8 +72,7 @@
 (defn get-date
   ""
   [entry]
-  (parse-local bifDateTime (join (:content (second (:content entry)))))
-  )
+  (parse-local bifDateTime (str (:content (second (:content entry))))))
 
 (defn get-msg
   ""
@@ -140,8 +129,7 @@
 (defn process-repo
   "Process a subversion repository"
   []
+  (process-xml "")
   (println "---------------------")
   (testmap (take 4 (:content (convert-xml-to-struct "")))) 
-  (println "---------------------")
-  (store-xml "")
-  (update-state :processed-data (process-log)))
+  (println "---------------------"))

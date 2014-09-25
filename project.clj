@@ -9,6 +9,7 @@
                  [clj-time "0.6.0"]
                  [org.clojure/data.csv "0.1.2"]
                  [incanter "1.5.4"]
+                 [org.tmatesoft.svnkit/svnkit "1.8.5"]
 ;                 [ring-server "0.3.1"]
                  ]
   :main net.extreme-nelsons.system

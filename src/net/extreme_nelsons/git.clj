@@ -8,6 +8,8 @@
 
 ;;(def therepo (porcelain/load-repo "/home/anelson/git/vcsstats/.git"))
 
+(def repo-path "/home/anelson/git/vcsstats/.git")
+
 (defn load-repo
   "Load in a repo from some source."
   [repo-path]
@@ -59,3 +61,8 @@
   []
   (let [repo-path "/home/anelson/git/vcsstats/.git"]
     (map #(println (convert-log-entry %)) (get-repo-logs repo-path))))
+
+(defn test2
+  ""
+  []
+  (porcelain/with-repo repo-path (porcelain/git-log repo)))

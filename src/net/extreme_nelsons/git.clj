@@ -3,7 +3,9 @@
             [clojure.string :refer [join]]
             [clojure.pprint :refer [pprint]]
             [net.extreme-nelsons.state :refer [get-state]]
-            [clj-jgit.porcelain :as porcelain]
+            [clj-jgit.porcelain :as git]
+            [clj-jgit.querying :as gitquery]
+            [clj-jgit.internal :as gitinternal]
             [clj-time.coerce :as c]))
 
 ;;(def therepo (porcelain/load-repo "/home/anelson/git/vcsstats/.git"))
@@ -13,12 +15,12 @@
 (defn load-repo
   "Load in a repo from some source."
   [repo-path]
-  (porcelain/load-repo repo-path))
+  (git/load-repo repo-path))
 
 (defn get-repo-logs
   "load git repo"
   [repo-path]
-  (porcelain/git-log (load-repo repo-path)))
+  (git/git-log (load-repo repo-path)))
 
 (defn convert-time-info
   "Converts the time portion of a JGit PersonIdent to a map"
@@ -56,13 +58,28 @@
         timestamp (convert-time-info ident)]
     (into {} [author message timestamp])))
 
+(defn get-repo
+  ""
+  [path]
+  (git/load-repo path))
+   
 (defn test-log
   ""
   []
   (let [repo-path "/home/anelson/git/vcsstats/.git"]
-    (map #(println (convert-log-entry %)) (get-repo-logs repo-path))))
+    (map #(convert-log-entry %) (get-repo-logs repo-path))))
 
-(defn test2
+(defn get-repo-history
+  ""
+  [repo]
+  (let [rev-walk (gitinternal/new-rev-walk repo)
+      commit-map (gitquery/build-commit-map repo rev-walk)
+      commits (git/git-log repo)]
+    (map (partial gitquery/commit-info repo rev-walk commit-map) commits)))
+
+(defn test4
   ""
   []
-  (porcelain/with-repo repo-path (porcelain/git-log repo)))
+  (let [repo (get-repo "/home/anelson/git/vcsstats/.git")
+        history (get-repo-history repo)]
+    (map #(clojure.pprint/pprint %) history)))

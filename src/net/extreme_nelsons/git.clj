@@ -82,11 +82,21 @@
   [branch, entry]
   (= 0 (.compareToIgnoreCase branch (last (:branches entry)))))
 
+(defn commits-matching-branch
+  ""
+  [history branch]
+  (filter #(contains-branch? branch %) history))
+
+(defn get-file-counts
+  ""
+  []
+  (pprint "Hello world"))
+
 (defn get-file-stats
   ""
   [history branch]
   (let [sorted (sort-by :time history)]
-    (filter #(contains-branch? branch %) sorted)))
+    (pprint (map #(count (:branches %)) (commits-matching-branch sorted branch)))))
   
 (defn test4
   ""

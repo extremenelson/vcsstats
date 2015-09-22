@@ -3,9 +3,9 @@
             [clojure.string :refer [join]]
             [clojure.pprint :refer [pprint]]
             [net.extreme-nelsons.state :refer [get-state]]
-            [clj-jgit.porcelain :as git]
-            [clj-jgit.querying :as gitquery]
-            [clj-jgit.internal :as gitinternal]
+            [clj-jgit.porcelain :as gp]
+            [clj-jgit.querying :as gq]
+            [clj-jgit.internal :as gi]
             [clj-time.coerce :as c]))
 
 ;;(def therepo (porcelain/load-repo "/home/anelson/git/vcsstats/.git"))
@@ -61,7 +61,7 @@
 (defn get-repo
   ""
   [path]
-  (git/load-repo path))
+  (gp/load-repo path))
    
 (defn test-log
   ""
@@ -72,14 +72,25 @@
 (defn get-repo-history
   ""
   [repo]
-  (let [rev-walk (gitinternal/new-rev-walk repo)
-      commit-map (gitquery/build-commit-map repo rev-walk)
-      commits (git/git-log repo)]
-    (map (partial gitquery/commit-info repo rev-walk commit-map) commits)))
+  (let [rev-walk (gi/new-rev-walk repo)
+      commit-map (gq/build-commit-map repo rev-walk)
+      commits (gp/git-log repo)]
+    (map (partial gq/commit-info repo rev-walk commit-map) commits)))
 
+(defn contains-branch?
+  ""
+  [branch, entry]
+  (= 0 (.compareToIgnoreCase branch (last (:branches entry)))))
+
+(defn get-file-stats
+  ""
+  [history branch]
+  (let [sorted (sort-by :time history)]
+    (filter #(contains-branch? branch %) sorted)))
+  
 (defn test4
   ""
   []
   (let [repo (get-repo "/home/anelson/git/vcsstats/.git")
         history (get-repo-history repo)]
-    (map #(clojure.pprint/pprint %) history)))
+    (map #(pprint %) (get-file-stats history "refs/heads/master"))))

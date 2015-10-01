@@ -15,12 +15,12 @@
 (defn load-repo
   "Load in a repo from some source."
   [repo-path]
-  (git/load-repo repo-path))
+  (gp/load-repo repo-path))
 
 (defn get-repo-logs
   "load git repo"
   [repo-path]
-  (git/git-log (load-repo repo-path)))
+  (gp/git-log (load-repo repo-path)))
 
 (defn convert-time-info
   "Converts the time portion of a JGit PersonIdent to a map"
@@ -89,14 +89,16 @@
 
 (defn get-file-counts
   ""
-  []
-  (pprint "Hello world"))
+  [history branch]
+  (let [sorted (sort-by :time history)]
+    (map #(count (:branches %)) (commits-matching-branch sorted branch))))
 
 (defn get-file-stats
   ""
   [history branch]
-  (let [sorted (sort-by :time history)]
-    (pprint (map #(count (:branches %)) (commits-matching-branch sorted branch)))))
+  (let [counts (get-file-counts history branch)]
+    (pprint (apply min counts))
+    (pprint (apply max counts))))
   
 (defn test4
   ""

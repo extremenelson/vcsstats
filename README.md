@@ -1,6 +1,6 @@
-# net.extreme-nelsons/svnstats
+# net.extreme-nelsons/vcsstats
 
-TODO: Brief description
+This project is intended to provide the ability to 
 
 
 

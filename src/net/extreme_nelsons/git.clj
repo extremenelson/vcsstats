@@ -10,7 +10,7 @@
 
 ;;(def therepo (porcelain/load-repo "/home/anelson/git/vcsstats/.git"))
 
-(def repo-path "/home/anelson/git/vcsstats/.git")
+(def repo-path "./.git")
 
 (defn load-repo
   "Load in a repo from some source."
@@ -58,10 +58,15 @@
         timestamp (convert-time-info ident)]
     (into {} [author message timestamp])))
 
+(defn check-path
+  ""
+  [path]
+  (if (= (subs path 0 1) ".") (join [(System/getProperty "user.dir") (subs path 1)]) path))
+  
 (defn get-repo
   ""
   [path]
-  (gp/load-repo path))
+  (gp/load-repo (check-path path)))
    
 (defn test-log
   ""
@@ -103,6 +108,6 @@
 (defn test4
   ""
   []
-  (let [repo (get-repo "/home/anelson/git/vcsstats/.git")
+  (let [repo (get-repo repo-path)
         history (get-repo-history repo)]
     (map #(pprint %) (get-file-stats history "refs/heads/master"))))
